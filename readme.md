@@ -37,7 +37,7 @@ initdb database
 createdb -h localhost -p 5432 sciencedata  
 pg_ctl -D database -l logs/dbLog.log start  
 
-**When prompted by the next command write this password: Nejlepsi69Science**
+**When prompted by the next command write this password: Nejlepsi69Science**  
 createuser -s -P labhub
 
 psql -d sciencedata -a -f sql/init.sql
