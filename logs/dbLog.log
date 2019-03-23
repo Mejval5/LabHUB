@@ -377,3 +377,26 @@
 2019-03-23 20:47:03.264 CET [24928] LOG:  background worker "logical replication launcher" (PID 26140) exited with exit code 1
 2019-03-23 20:47:03.274 CET [25872] LOG:  shutting down
 2019-03-23 20:47:03.312 CET [24928] LOG:  database system is shut down
+2019-03-23 21:06:11.304 CET [23144] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 21:06:11.304 CET [23144] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 21:06:11.418 CET [20168] LOG:  database system was shut down at 2019-03-23 20:58:57 CET
+2019-03-23 21:06:11.481 CET [23144] LOG:  database system is ready to accept connections
+2019-03-23 21:07:01.673 CET [11352] FATAL:  role "labhub" does not exist
+2019-03-23 21:07:50.398 CET [23144] LOG:  received fast shutdown request
+2019-03-23 21:07:50.416 CET [20992] ERROR:  canceling statement due to user request
+2019-03-23 21:07:50.420 CET [23144] LOG:  aborting any active transactions
+2019-03-23 21:07:50.435 CET [23144] LOG:  background worker "logical replication launcher" (PID 20992) exited with exit code 1
+2019-03-23 21:07:50.494 CET [20288] LOG:  shutting down
+2019-03-23 21:07:50.593 CET [23144] LOG:  database system is shut down
+2019-03-23 21:09:51.888 CET [19940] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 21:09:51.888 CET [19940] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 21:09:51.992 CET [4656] LOG:  database system was shut down at 2019-03-23 21:07:50 CET
+2019-03-23 21:09:52.039 CET [19940] LOG:  database system is ready to accept connections
+2019-03-23 21:11:15.766 CET [6852] ERROR:  canceling statement due to user request
+2019-03-23 21:11:15.767 CET [19940] LOG:  received fast shutdown request
+2019-03-23 21:11:15.819 CET [19940] LOG:  aborting any active transactions
+2019-03-23 21:11:15.827 CET [2084] FATAL:  terminating connection due to administrator command
+2019-03-23 21:11:15.838 CET [12292] FATAL:  terminating connection due to administrator command
+2019-03-23 21:11:15.840 CET [19940] LOG:  background worker "logical replication launcher" (PID 6852) exited with exit code 1
+2019-03-23 21:11:15.929 CET [16028] LOG:  shutting down
+2019-03-23 21:11:16.028 CET [19940] LOG:  database system is shut down

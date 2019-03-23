@@ -40,7 +40,7 @@ db = Database(**app.config["database"])
 
 #scanner = Scanner(db)
 
-import scihub.routes
+import labhub.routes
 
 
 @app.before_request
