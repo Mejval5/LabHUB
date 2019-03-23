@@ -493,3 +493,4234 @@
 2019-03-23 21:31:24.263 CET [10540] FATAL:  role "scihub" does not exist
 2019-03-23 21:31:38.177 CET [11876] FATAL:  role "scihub" does not exist
 2019-03-23 21:32:00.137 CET [20236] FATAL:  role "scihub" does not exist
+2019-03-23 22:38:56.104 CET [4468] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:38:56.105 CET [4468] LOG:  unexpected EOF on client connection with an open transaction
+2019-03-23 22:38:56.314 CET [22008] LOG:  received fast shutdown request
+2019-03-23 22:38:56.335 CET [6872] ERROR:  canceling statement due to user request
+2019-03-23 22:38:56.341 CET [22008] LOG:  aborting any active transactions
+2019-03-23 22:38:56.346 CET [25660] FATAL:  terminating connection due to administrator command
+2019-03-23 22:38:56.360 CET [10504] FATAL:  terminating connection due to administrator command
+2019-03-23 22:38:56.370 CET [8324] FATAL:  terminating connection due to administrator command
+2019-03-23 22:38:56.404 CET [1876] FATAL:  terminating connection due to administrator command
+2019-03-23 22:38:56.409 CET [23056] FATAL:  terminating connection due to administrator command
+2019-03-23 22:38:56.411 CET [9744] FATAL:  terminating connection due to administrator command
+2019-03-23 22:38:56.413 CET [22008] LOG:  background worker "logical replication launcher" (PID 6872) exited with exit code 1
+2019-03-23 22:38:56.466 CET [21028] LOG:  shutting down
+2019-03-23 22:38:56.663 CET [22008] LOG:  database system is shut down
+2019-03-23 22:39:02.162 CET [18196] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 22:39:02.162 CET [18196] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 22:39:02.275 CET [24688] LOG:  database system was shut down at 2019-03-23 22:38:56 CET
+2019-03-23 22:39:02.331 CET [18196] LOG:  database system is ready to accept connections
+2019-03-23 22:39:28.708 CET [15876] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:39:48.490 CET [24916] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:42:32.627 CET [26344] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:42:51.136 CET [23752] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:52:23.596 CET [3832] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:52:48.569 CET [2196] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:52:56.387 CET [20368] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:53:26.382 CET [27508] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 22:53:43.704 CET [19712] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 23:04:42.185 CET [20368] ERROR:  syntax error at or near "`" at character 121
+2019-03-23 23:04:42.185 CET [20368] STATEMENT:  SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+	SET AUTOCOMMIT = 0;
+	START TRANSACTION;
+	SET time_zone = "+00:00";
+	
+	
+	CREATE TABLE `logmeasurement` (
+	  `IDLog` int(11) NOT NULL,
+	  `NameLog` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `DirectoryOfData` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDProject` int(11) NOT NULL,
+	  `IDStructure` int(11) NOT NULL,
+	  `Idea` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Attribute` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDSetup` int(11) NOT NULL,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of each entry in the labbook';
+	
+	
+	
+	INSERT INTO `logmeasurement` (`IDLog`, `NameLog`, `Date`, `DirectoryOfData`, `IDProject`, `IDStructure`, `Idea`, `Comment`, `Attribute`, `IDSetup`, `IDSample`) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kg\n', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '		', '', 4, 3);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `picture` (
+	  `IDPicture` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `PathOfPicture` text COLLATE utf8mb4_unicode_ci NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	CREATE TABLE `project` (
+	  `IDProject` int(11) NOT NULL,
+	  `NameProject` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateProject` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of projects';
+	
+	
+	
+	INSERT INTO `project` (`IDProject`, `NameProject`, `DateProject`) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	-- --------------------------------------------------------
+	
+	CREATE TABLE `sample` (
+	  `IDSample` int(11) NOT NULL,
+	  `NameSample` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `dateSample` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `sample` (`IDSample`, `NameSample`, `Description`, `dateSample`) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	-- --------------------------------------------------------
+	
+	
+	
+	CREATE TABLE `setup` (
+	  `SetupID` int(11) NOT NULL,
+	  `SetupName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DescriptionSetup` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateSetup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of setups';
+	
+	
+	
+	INSERT INTO `setup` (`SetupID`, `SetupName`, `DescriptionSetup`, `DateSetup`) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	
+	
+	CREATE TABLE `structure` (
+	  `IDStructure` int(11) NOT NULL,
+	  `StructureName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDescription` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `structure` (`IDStructure`, `StructureName`, `StructureDescription`, `StructureDate`, `IDSample`) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning center\r\nright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `user` (
+	  `IDUser` int(11) NOT NULL,
+	  `NameUser` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateUser` date NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of users';
+	
+	-- --------------------------------------------------------
+	
+	--
+	-- Struktura tabulky `userlog`
+	--
+	
+	CREATE TABLE `userlog` (
+	  `IDUserLog` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `IDUser` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of user and IDlog relation';
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD PRIMARY KEY (`IDLog`),
+	  ADD KEY `IDProject` (`IDProject`,`IDStructure`,`IDSetup`,`IDSample`),
+	  ADD KEY `IDStructure` (`IDStructure`),
+	  ADD KEY `IDSetup` (`IDSetup`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD PRIMARY KEY (`IDPicture`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`);
+	
+	
+	ALTER TABLE `project`
+	  ADD PRIMARY KEY (`IDProject`);
+	
+	
+	ALTER TABLE `sample`
+	  ADD PRIMARY KEY (`IDSample`);
+	
+	
+	ALTER TABLE `setup`
+	  ADD PRIMARY KEY (`SetupID`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD PRIMARY KEY (`IDStructure`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `user`
+	  ADD PRIMARY KEY (`IDUser`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD PRIMARY KEY (`IDUserLog`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`,`IDUser`),
+	  ADD KEY `IDUser` (`IDUser`);
+	
+	
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `logmeasurement`
+	--
+	ALTER TABLE `logmeasurement`
+	  MODIFY `IDLog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `picture`
+	--
+	ALTER TABLE `picture`
+	  MODIFY `IDPicture` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `project`
+	--
+	ALTER TABLE `project`
+	  MODIFY `IDProject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `sample`
+	--
+	ALTER TABLE `sample`
+	  MODIFY `IDSample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `setup`
+	--
+	ALTER TABLE `setup`
+	  MODIFY `SetupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `structure`
+	--
+	ALTER TABLE `structure`
+	  MODIFY `IDStructure` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `user`
+	--
+	ALTER TABLE `user`
+	  MODIFY `IDUser` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `userlog`
+	--
+	ALTER TABLE `userlog`
+	  MODIFY `IDUserLog` int(11) NOT NULL AUTO_INCREMENT;
+	
+	
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD CONSTRAINT `logmeasurement_ibfk_2` FOREIGN KEY (`IDProject`) REFERENCES `project` (`IDProject`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_3` FOREIGN KEY (`IDStructure`) REFERENCES `structure` (`IDStructure`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_4` FOREIGN KEY (`IDSetup`) REFERENCES `setup` (`SetupID`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_5` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD CONSTRAINT `picture_ibfk_1` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD CONSTRAINT `structure_ibfk_2` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD CONSTRAINT `userlog_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `user` (`IDUser`),
+	  ADD CONSTRAINT `userlog_ibfk_2` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:04:52.052 CET [20368] ERROR:  syntax error at or near "SET" at character 103
+2019-03-23 23:04:52.052 CET [20368] STATEMENT:  EXPLAIN (FORMAT JSON,ANALYZE True,VERBOSE False,COSTS False,TIMING False,SUMMARY False,BUFFERS False) SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+	SET AUTOCOMMIT = 0;
+	START TRANSACTION;
+	SET time_zone = "+00:00";
+	
+	
+	CREATE TABLE `logmeasurement` (
+	  `IDLog` int(11) NOT NULL,
+	  `NameLog` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `DirectoryOfData` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDProject` int(11) NOT NULL,
+	  `IDStructure` int(11) NOT NULL,
+	  `Idea` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Attribute` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDSetup` int(11) NOT NULL,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of each entry in the labbook';
+	
+	
+	
+	INSERT INTO `logmeasurement` (`IDLog`, `NameLog`, `Date`, `DirectoryOfData`, `IDProject`, `IDStructure`, `Idea`, `Comment`, `Attribute`, `IDSetup`, `IDSample`) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kg\n', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '		', '', 4, 3);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `picture` (
+	  `IDPicture` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `PathOfPicture` text COLLATE utf8mb4_unicode_ci NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	CREATE TABLE `project` (
+	  `IDProject` int(11) NOT NULL,
+	  `NameProject` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateProject` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of projects';
+	
+	
+	
+	INSERT INTO `project` (`IDProject`, `NameProject`, `DateProject`) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	-- --------------------------------------------------------
+	
+	CREATE TABLE `sample` (
+	  `IDSample` int(11) NOT NULL,
+	  `NameSample` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `dateSample` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `sample` (`IDSample`, `NameSample`, `Description`, `dateSample`) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	-- --------------------------------------------------------
+	
+	
+	
+	CREATE TABLE `setup` (
+	  `SetupID` int(11) NOT NULL,
+	  `SetupName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DescriptionSetup` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateSetup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of setups';
+	
+	
+	
+	INSERT INTO `setup` (`SetupID`, `SetupName`, `DescriptionSetup`, `DateSetup`) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	
+	
+	CREATE TABLE `structure` (
+	  `IDStructure` int(11) NOT NULL,
+	  `StructureName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDescription` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `structure` (`IDStructure`, `StructureName`, `StructureDescription`, `StructureDate`, `IDSample`) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning center\r\nright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `user` (
+	  `IDUser` int(11) NOT NULL,
+	  `NameUser` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateUser` date NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of users';
+	
+	-- --------------------------------------------------------
+	
+	--
+	-- Struktura tabulky `userlog`
+	--
+	
+	CREATE TABLE `userlog` (
+	  `IDUserLog` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `IDUser` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of user and IDlog relation';
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD PRIMARY KEY (`IDLog`),
+	  ADD KEY `IDProject` (`IDProject`,`IDStructure`,`IDSetup`,`IDSample`),
+	  ADD KEY `IDStructure` (`IDStructure`),
+	  ADD KEY `IDSetup` (`IDSetup`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD PRIMARY KEY (`IDPicture`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`);
+	
+	
+	ALTER TABLE `project`
+	  ADD PRIMARY KEY (`IDProject`);
+	
+	
+	ALTER TABLE `sample`
+	  ADD PRIMARY KEY (`IDSample`);
+	
+	
+	ALTER TABLE `setup`
+	  ADD PRIMARY KEY (`SetupID`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD PRIMARY KEY (`IDStructure`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `user`
+	  ADD PRIMARY KEY (`IDUser`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD PRIMARY KEY (`IDUserLog`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`,`IDUser`),
+	  ADD KEY `IDUser` (`IDUser`);
+	
+	
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `logmeasurement`
+	--
+	ALTER TABLE `logmeasurement`
+	  MODIFY `IDLog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `picture`
+	--
+	ALTER TABLE `picture`
+	  MODIFY `IDPicture` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `project`
+	--
+	ALTER TABLE `project`
+	  MODIFY `IDProject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `sample`
+	--
+	ALTER TABLE `sample`
+	  MODIFY `IDSample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `setup`
+	--
+	ALTER TABLE `setup`
+	  MODIFY `SetupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `structure`
+	--
+	ALTER TABLE `structure`
+	  MODIFY `IDStructure` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `user`
+	--
+	ALTER TABLE `user`
+	  MODIFY `IDUser` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `userlog`
+	--
+	ALTER TABLE `userlog`
+	  MODIFY `IDUserLog` int(11) NOT NULL AUTO_INCREMENT;
+	
+	
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD CONSTRAINT `logmeasurement_ibfk_2` FOREIGN KEY (`IDProject`) REFERENCES `project` (`IDProject`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_3` FOREIGN KEY (`IDStructure`) REFERENCES `structure` (`IDStructure`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_4` FOREIGN KEY (`IDSetup`) REFERENCES `setup` (`SetupID`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_5` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD CONSTRAINT `picture_ibfk_1` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD CONSTRAINT `structure_ibfk_2` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD CONSTRAINT `userlog_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `user` (`IDUser`),
+	  ADD CONSTRAINT `userlog_ibfk_2` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:04:52.662 CET [20368] ERROR:  syntax error at or near "SET" at character 103
+2019-03-23 23:04:52.662 CET [20368] STATEMENT:  EXPLAIN (FORMAT JSON,ANALYZE True,VERBOSE False,COSTS False,TIMING False,SUMMARY False,BUFFERS False) SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+	SET AUTOCOMMIT = 0;
+	START TRANSACTION;
+	SET time_zone = "+00:00";
+	
+	
+	CREATE TABLE `logmeasurement` (
+	  `IDLog` int(11) NOT NULL,
+	  `NameLog` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `DirectoryOfData` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDProject` int(11) NOT NULL,
+	  `IDStructure` int(11) NOT NULL,
+	  `Idea` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Attribute` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDSetup` int(11) NOT NULL,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of each entry in the labbook';
+	
+	
+	
+	INSERT INTO `logmeasurement` (`IDLog`, `NameLog`, `Date`, `DirectoryOfData`, `IDProject`, `IDStructure`, `Idea`, `Comment`, `Attribute`, `IDSetup`, `IDSample`) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kg\n', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '		', '', 4, 3);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `picture` (
+	  `IDPicture` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `PathOfPicture` text COLLATE utf8mb4_unicode_ci NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	CREATE TABLE `project` (
+	  `IDProject` int(11) NOT NULL,
+	  `NameProject` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateProject` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of projects';
+	
+	
+	
+	INSERT INTO `project` (`IDProject`, `NameProject`, `DateProject`) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	-- --------------------------------------------------------
+	
+	CREATE TABLE `sample` (
+	  `IDSample` int(11) NOT NULL,
+	  `NameSample` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `dateSample` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `sample` (`IDSample`, `NameSample`, `Description`, `dateSample`) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	-- --------------------------------------------------------
+	
+	
+	
+	CREATE TABLE `setup` (
+	  `SetupID` int(11) NOT NULL,
+	  `SetupName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DescriptionSetup` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateSetup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of setups';
+	
+	
+	
+	INSERT INTO `setup` (`SetupID`, `SetupName`, `DescriptionSetup`, `DateSetup`) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	
+	
+	CREATE TABLE `structure` (
+	  `IDStructure` int(11) NOT NULL,
+	  `StructureName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDescription` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `structure` (`IDStructure`, `StructureName`, `StructureDescription`, `StructureDate`, `IDSample`) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning center\r\nright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `user` (
+	  `IDUser` int(11) NOT NULL,
+	  `NameUser` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateUser` date NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of users';
+	
+	-- --------------------------------------------------------
+	
+	--
+	-- Struktura tabulky `userlog`
+	--
+	
+	CREATE TABLE `userlog` (
+	  `IDUserLog` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `IDUser` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of user and IDlog relation';
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD PRIMARY KEY (`IDLog`),
+	  ADD KEY `IDProject` (`IDProject`,`IDStructure`,`IDSetup`,`IDSample`),
+	  ADD KEY `IDStructure` (`IDStructure`),
+	  ADD KEY `IDSetup` (`IDSetup`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD PRIMARY KEY (`IDPicture`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`);
+	
+	
+	ALTER TABLE `project`
+	  ADD PRIMARY KEY (`IDProject`);
+	
+	
+	ALTER TABLE `sample`
+	  ADD PRIMARY KEY (`IDSample`);
+	
+	
+	ALTER TABLE `setup`
+	  ADD PRIMARY KEY (`SetupID`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD PRIMARY KEY (`IDStructure`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `user`
+	  ADD PRIMARY KEY (`IDUser`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD PRIMARY KEY (`IDUserLog`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`,`IDUser`),
+	  ADD KEY `IDUser` (`IDUser`);
+	
+	
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `logmeasurement`
+	--
+	ALTER TABLE `logmeasurement`
+	  MODIFY `IDLog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `picture`
+	--
+	ALTER TABLE `picture`
+	  MODIFY `IDPicture` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `project`
+	--
+	ALTER TABLE `project`
+	  MODIFY `IDProject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `sample`
+	--
+	ALTER TABLE `sample`
+	  MODIFY `IDSample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `setup`
+	--
+	ALTER TABLE `setup`
+	  MODIFY `SetupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `structure`
+	--
+	ALTER TABLE `structure`
+	  MODIFY `IDStructure` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `user`
+	--
+	ALTER TABLE `user`
+	  MODIFY `IDUser` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `userlog`
+	--
+	ALTER TABLE `userlog`
+	  MODIFY `IDUserLog` int(11) NOT NULL AUTO_INCREMENT;
+	
+	
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD CONSTRAINT `logmeasurement_ibfk_2` FOREIGN KEY (`IDProject`) REFERENCES `project` (`IDProject`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_3` FOREIGN KEY (`IDStructure`) REFERENCES `structure` (`IDStructure`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_4` FOREIGN KEY (`IDSetup`) REFERENCES `setup` (`SetupID`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_5` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD CONSTRAINT `picture_ibfk_1` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD CONSTRAINT `structure_ibfk_2` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD CONSTRAINT `userlog_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `user` (`IDUser`),
+	  ADD CONSTRAINT `userlog_ibfk_2` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:08:27.319 CET [20368] ERROR:  syntax error at or near "`" at character 16
+2019-03-23 23:08:27.319 CET [20368] STATEMENT:  
+	
+	CREATE TABLE `logmeasurement` (
+	  `IDLog` int(11) NOT NULL,
+	  `NameLog` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `DirectoryOfData` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDProject` int(11) NOT NULL,
+	  `IDStructure` int(11) NOT NULL,
+	  `Idea` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Attribute` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDSetup` int(11) NOT NULL,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of each entry in the labbook';
+	
+	
+	
+	INSERT INTO `logmeasurement` (`IDLog`, `NameLog`, `Date`, `DirectoryOfData`, `IDProject`, `IDStructure`, `Idea`, `Comment`, `Attribute`, `IDSetup`, `IDSample`) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kg\n', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '		', '', 4, 3);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `picture` (
+	  `IDPicture` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `PathOfPicture` text COLLATE utf8mb4_unicode_ci NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	CREATE TABLE `project` (
+	  `IDProject` int(11) NOT NULL,
+	  `NameProject` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateProject` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of projects';
+	
+	
+	
+	INSERT INTO `project` (`IDProject`, `NameProject`, `DateProject`) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	-- --------------------------------------------------------
+	
+	CREATE TABLE `sample` (
+	  `IDSample` int(11) NOT NULL,
+	  `NameSample` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `dateSample` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `sample` (`IDSample`, `NameSample`, `Description`, `dateSample`) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	-- --------------------------------------------------------
+	
+	
+	
+	CREATE TABLE `setup` (
+	  `SetupID` int(11) NOT NULL,
+	  `SetupName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DescriptionSetup` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateSetup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of setups';
+	
+	
+	
+	INSERT INTO `setup` (`SetupID`, `SetupName`, `DescriptionSetup`, `DateSetup`) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	
+	
+	CREATE TABLE `structure` (
+	  `IDStructure` int(11) NOT NULL,
+	  `StructureName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDescription` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `structure` (`IDStructure`, `StructureName`, `StructureDescription`, `StructureDate`, `IDSample`) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning center\r\nright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `user` (
+	  `IDUser` int(11) NOT NULL,
+	  `NameUser` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateUser` date NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of users';
+	
+	-- --------------------------------------------------------
+	
+	--
+	-- Struktura tabulky `userlog`
+	--
+	
+	CREATE TABLE `userlog` (
+	  `IDUserLog` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `IDUser` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of user and IDlog relation';
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD PRIMARY KEY (`IDLog`),
+	  ADD KEY `IDProject` (`IDProject`,`IDStructure`,`IDSetup`,`IDSample`),
+	  ADD KEY `IDStructure` (`IDStructure`),
+	  ADD KEY `IDSetup` (`IDSetup`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD PRIMARY KEY (`IDPicture`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`);
+	
+	
+	ALTER TABLE `project`
+	  ADD PRIMARY KEY (`IDProject`);
+	
+	
+	ALTER TABLE `sample`
+	  ADD PRIMARY KEY (`IDSample`);
+	
+	
+	ALTER TABLE `setup`
+	  ADD PRIMARY KEY (`SetupID`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD PRIMARY KEY (`IDStructure`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `user`
+	  ADD PRIMARY KEY (`IDUser`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD PRIMARY KEY (`IDUserLog`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`,`IDUser`),
+	  ADD KEY `IDUser` (`IDUser`);
+	
+	
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `logmeasurement`
+	--
+	ALTER TABLE `logmeasurement`
+	  MODIFY `IDLog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `picture`
+	--
+	ALTER TABLE `picture`
+	  MODIFY `IDPicture` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `project`
+	--
+	ALTER TABLE `project`
+	  MODIFY `IDProject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `sample`
+	--
+	ALTER TABLE `sample`
+	  MODIFY `IDSample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `setup`
+	--
+	ALTER TABLE `setup`
+	  MODIFY `SetupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `structure`
+	--
+	ALTER TABLE `structure`
+	  MODIFY `IDStructure` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `user`
+	--
+	ALTER TABLE `user`
+	  MODIFY `IDUser` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `userlog`
+	--
+	ALTER TABLE `userlog`
+	  MODIFY `IDUserLog` int(11) NOT NULL AUTO_INCREMENT;
+	
+	
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD CONSTRAINT `logmeasurement_ibfk_2` FOREIGN KEY (`IDProject`) REFERENCES `project` (`IDProject`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_3` FOREIGN KEY (`IDStructure`) REFERENCES `structure` (`IDStructure`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_4` FOREIGN KEY (`IDSetup`) REFERENCES `setup` (`SetupID`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_5` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD CONSTRAINT `picture_ibfk_1` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD CONSTRAINT `structure_ibfk_2` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD CONSTRAINT `userlog_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `user` (`IDUser`),
+	  ADD CONSTRAINT `userlog_ibfk_2` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:08:35.735 CET [20368] ERROR:  syntax error at or near "`" at character 35
+2019-03-23 23:08:35.735 CET [20368] STATEMENT:  
+	
+	CREATE TABLE logmeasurement (
+	  `IDLog` int(11) NOT NULL,
+	  `NameLog` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `DirectoryOfData` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDProject` int(11) NOT NULL,
+	  `IDStructure` int(11) NOT NULL,
+	  `Idea` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Attribute` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `IDSetup` int(11) NOT NULL,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of each entry in the labbook';
+	
+	
+	
+	INSERT INTO `logmeasurement` (`IDLog`, `NameLog`, `Date`, `DirectoryOfData`, `IDProject`, `IDStructure`, `Idea`, `Comment`, `Attribute`, `IDSetup`, `IDSample`) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kg\n', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '		', '', 4, 3);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `picture` (
+	  `IDPicture` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `PathOfPicture` text COLLATE utf8mb4_unicode_ci NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	CREATE TABLE `project` (
+	  `IDProject` int(11) NOT NULL,
+	  `NameProject` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateProject` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of projects';
+	
+	
+	
+	INSERT INTO `project` (`IDProject`, `NameProject`, `DateProject`) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	-- --------------------------------------------------------
+	
+	CREATE TABLE `sample` (
+	  `IDSample` int(11) NOT NULL,
+	  `NameSample` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `dateSample` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `sample` (`IDSample`, `NameSample`, `Description`, `dateSample`) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	-- --------------------------------------------------------
+	
+	
+	
+	CREATE TABLE `setup` (
+	  `SetupID` int(11) NOT NULL,
+	  `SetupName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DescriptionSetup` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateSetup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of setups';
+	
+	
+	
+	INSERT INTO `setup` (`SetupID`, `SetupName`, `DescriptionSetup`, `DateSetup`) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	
+	
+	CREATE TABLE `structure` (
+	  `IDStructure` int(11) NOT NULL,
+	  `StructureName` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDescription` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `StructureDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `IDSample` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	
+	
+	INSERT INTO `structure` (`IDStructure`, `StructureName`, `StructureDescription`, `StructureDate`, `IDSample`) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning center\r\nright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	-- --------------------------------------------------------
+	
+	
+	CREATE TABLE `user` (
+	  `IDUser` int(11) NOT NULL,
+	  `NameUser` text COLLATE utf8mb4_unicode_ci NOT NULL,
+	  `DateUser` date NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of users';
+	
+	-- --------------------------------------------------------
+	
+	--
+	-- Struktura tabulky `userlog`
+	--
+	
+	CREATE TABLE `userlog` (
+	  `IDUserLog` int(11) NOT NULL,
+	  `IDLogMeasurement` int(11) NOT NULL,
+	  `IDUser` int(11) NOT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of user and IDlog relation';
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD PRIMARY KEY (`IDLog`),
+	  ADD KEY `IDProject` (`IDProject`,`IDStructure`,`IDSetup`,`IDSample`),
+	  ADD KEY `IDStructure` (`IDStructure`),
+	  ADD KEY `IDSetup` (`IDSetup`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD PRIMARY KEY (`IDPicture`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`);
+	
+	
+	ALTER TABLE `project`
+	  ADD PRIMARY KEY (`IDProject`);
+	
+	
+	ALTER TABLE `sample`
+	  ADD PRIMARY KEY (`IDSample`);
+	
+	
+	ALTER TABLE `setup`
+	  ADD PRIMARY KEY (`SetupID`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD PRIMARY KEY (`IDStructure`),
+	  ADD KEY `IDSample` (`IDSample`);
+	
+	
+	ALTER TABLE `user`
+	  ADD PRIMARY KEY (`IDUser`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD PRIMARY KEY (`IDUserLog`),
+	  ADD KEY `IDLog` (`IDLogMeasurement`,`IDUser`),
+	  ADD KEY `IDUser` (`IDUser`);
+	
+	
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `logmeasurement`
+	--
+	ALTER TABLE `logmeasurement`
+	  MODIFY `IDLog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `picture`
+	--
+	ALTER TABLE `picture`
+	  MODIFY `IDPicture` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `project`
+	--
+	ALTER TABLE `project`
+	  MODIFY `IDProject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `sample`
+	--
+	ALTER TABLE `sample`
+	  MODIFY `IDSample` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `setup`
+	--
+	ALTER TABLE `setup`
+	  MODIFY `SetupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `structure`
+	--
+	ALTER TABLE `structure`
+	  MODIFY `IDStructure` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `user`
+	--
+	ALTER TABLE `user`
+	  MODIFY `IDUser` int(11) NOT NULL AUTO_INCREMENT;
+	
+	--
+	-- AUTO_INCREMENT pro tabulku `userlog`
+	--
+	ALTER TABLE `userlog`
+	  MODIFY `IDUserLog` int(11) NOT NULL AUTO_INCREMENT;
+	
+	
+	
+	
+	ALTER TABLE `logmeasurement`
+	  ADD CONSTRAINT `logmeasurement_ibfk_2` FOREIGN KEY (`IDProject`) REFERENCES `project` (`IDProject`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_3` FOREIGN KEY (`IDStructure`) REFERENCES `structure` (`IDStructure`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_4` FOREIGN KEY (`IDSetup`) REFERENCES `setup` (`SetupID`),
+	  ADD CONSTRAINT `logmeasurement_ibfk_5` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `picture`
+	  ADD CONSTRAINT `picture_ibfk_1` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	
+	
+	ALTER TABLE `structure`
+	  ADD CONSTRAINT `structure_ibfk_2` FOREIGN KEY (`IDSample`) REFERENCES `sample` (`IDSample`);
+	
+	
+	ALTER TABLE `userlog`
+	  ADD CONSTRAINT `userlog_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `user` (`IDUser`),
+	  ADD CONSTRAINT `userlog_ibfk_2` FOREIGN KEY (`IDLogMeasurement`) REFERENCES `logmeasurement` (`IDLog`);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:23:38.754 CET [296] ERROR:  syntax error at or near "AUTOCOMMIT" at character 2
+2019-03-23 23:23:38.754 CET [296] STATEMENT:   AUTOCOMMIT := 0;
+	START TRANSACTION;
+	time_zone := "+00:00";
+	
+	/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+	/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+	/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+	/*!40101 SET NAMES utf8mb4 */;
+	
+	
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	CREATE TABLE user (
+	  IDUser int NOT NULL,
+	  NameUser text NOT NULL,
+	  DateUser date NOT NULL
+	)   ;
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY `IDProject` (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY `IDStructure` (IDStructure),
+	  ADD KEY `IDSetup` (IDSetup),
+	  ADD KEY `IDSample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY `IDLog` (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY `IDSample` (IDSample);
+	
+	ALTER TABLE user
+	  ADD PRIMARY KEY (IDUser);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY `IDLog` (IDLogMeasurement,IDUser),
+	  ADD KEY `IDUser` (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE user
+	  MODIFY IDUser cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:24:01.422 CET [296] ERROR:  syntax error at or near "user" at character 3157
+2019-03-23 23:24:01.422 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	CREATE TABLE user (
+	  IDUser int NOT NULL,
+	  NameUser text NOT NULL,
+	  DateUser date NOT NULL
+	)   ;
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY `IDProject` (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY `IDStructure` (IDStructure),
+	  ADD KEY `IDSetup` (IDSetup),
+	  ADD KEY `IDSample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY `IDLog` (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY `IDSample` (IDSample);
+	
+	ALTER TABLE user
+	  ADD PRIMARY KEY (IDUser);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY `IDLog` (IDLogMeasurement,IDUser),
+	  ADD KEY `IDUser` (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE user
+	  MODIFY IDUser cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:24:33.096 CET [296] ERROR:  syntax error at or near "`" at character 3321
+2019-03-23 23:24:33.096 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY `IDProject` (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY `IDStructure` (IDStructure),
+	  ADD KEY `IDSetup` (IDSetup),
+	  ADD KEY `IDSample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY `IDLog` (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY `IDSample` (IDSample);
+	
+	ALTER TABLE user
+	  ADD PRIMARY KEY (IDUser);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY `IDLog` (IDLogMeasurement,IDUser),
+	  ADD KEY `IDUser` (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE user
+	  MODIFY IDUser cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:25:11.542 CET [296] ERROR:  syntax error at or near "`" at character 3383
+2019-03-23 23:25:11.542 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY `IDStructure` (IDStructure),
+	  ADD KEY `IDSetup` (IDSetup),
+	  ADD KEY `IDSample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY `IDLog` (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY `IDSample` (IDSample);
+	
+	ALTER TABLE user
+	  ADD PRIMARY KEY (IDUser);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY `IDLog` (IDLogMeasurement,IDUser),
+	  ADD KEY `IDUser` (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE user
+	  MODIFY IDUser cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:25:33.844 CET [296] ERROR:  syntax error at or near "user" at character 3808
+2019-03-23 23:25:33.844 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE user
+	  ADD PRIMARY KEY (IDUser);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE user
+	  MODIFY IDUser cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:25:45.978 CET [296] ERROR:  syntax error at or near "user" at character 3808
+2019-03-23 23:25:45.978 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE user
+	  ADD PRIMARY KEY (IDUser);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:25:50.369 CET [296] ERROR:  syntax error at or near "user" at character 3808
+2019-03-23 23:25:50.369 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE user
+	  ADD PRIMARY KEY (IDUser);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:25:56.095 CET [296] ERROR:  syntax error at or near "MODIFY" at character 3948
+2019-03-23 23:25:56.095 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:26:56.439 CET [296] ERROR:  syntax error at or near "UPDATE" at character 3948
+2019-03-23 23:26:56.439 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  UPDATE IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  UPDATE IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  UPDATE IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  UPDATE IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  UPDATE SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  UPDATE IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE userlog
+	  UPDATE IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:27:58.469 CET [296] ERROR:  syntax error at or near "MODIFY" at character 3948
+2019-03-23 23:27:58.469 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  MODIFY column IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:28:37.208 CET [296] ERROR:  syntax error at or near "column" at character 3952
+2019-03-23 23:28:37.208 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  SET column IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:28:43.408 CET [296] ERROR:  syntax error at or near "cast" at character 3965
+2019-03-23 23:28:43.408 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD column IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:29:11.019 CET [296] ERROR:  syntax error at or near "cast" at character 3966
+2019-03-23 23:29:11.019 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	 ALTER column IDLog cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+	
+	ALTER TABLE picture
+	  MODIFY IDPicture cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	ALTER TABLE project
+	  MODIFY IDProject cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE sample
+	  MODIFY IDSample cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+	
+	ALTER TABLE setup
+	  MODIFY SetupID cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+	
+	ALTER TABLE structure
+	  MODIFY IDStructure cast(11 as int) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+	
+	ALTER TABLE userlog
+	  MODIFY IDUserLog cast(11 as int) NOT NULL AUTO_INCREMENT;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:30:27.330 CET [296] ERROR:  syntax error at or near "`" at character 4117
+2019-03-23 23:30:27.330 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES `structure` (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES `setup` (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES `sample` (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES `logmeasurement` (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:30:45.017 CET [296] ERROR:  syntax error at or near "user" at character 4637
+2019-03-23 23:30:45.017 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES structure (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES Setup (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_1 FOREIGN KEY (IDUser) REFERENCES user (IDUser),
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:30:56.737 CET [296] ERROR:  type "idproject" does not exist at character 3321
+2019-03-23 23:30:56.737 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDProject (IDProject,IDStructure,IDSetup,IDSample),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES structure (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES Setup (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:31:10.917 CET [296] ERROR:  type "idstructure" does not exist at character 3321
+2019-03-23 23:31:10.917 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog),
+	  ADD KEY IDStructure (IDStructure),
+	  ADD KEY IDSetup (IDSetup),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES structure (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES Setup (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:31:17.165 CET [296] ERROR:  type "idlog" does not exist at character 3319
+2019-03-23 23:31:17.165 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	  ADD KEY IDLog (IDLogMeasurement);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES structure (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES Setup (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:32:27.646 CET [296] ERROR:  syntax error at or near "TABLE" at character 3370
+2019-03-23 23:32:27.646 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture),
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES structure (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES Setup (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:33:09.959 CET [296] ERROR:  type "idsample" does not exist at character 3579
+2019-03-23 23:33:09.959 CET [296] STATEMENT:  
+	CREATE TABLE logmeasurement (
+	  IDLog int NOT NULL,
+	  NameLog text NOT NULL,
+	  Date timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  DirectoryOfData text NOT NULL,
+	  IDProject int NOT NULL,
+	  IDStructure int NOT NULL,
+	  Idea text NOT NULL,
+	  Comment text NOT NULL,
+	  Attribute text NOT NULL,
+	  IDSetup int NOT NULL,
+	  IDSample int NOT NULL
+	)   ;
+	
+	INSERT INTO logmeasurement (IDLog, NameLog, Date, DirectoryOfData, IDProject, IDStructure, Idea, Comment, Attribute, IDSetup, IDSample) VALUES
+	(122, 'M1 -sweep field', '2019-03-17 15:51:12', 'NastyPath', 4, 10, 'My idea is to test everythink. Try to create new structure during measurment', 'Hope it will work', 'Test,1Kgn', 4, 2),
+	(123, 'M3 - 2D map', '2019-03-17 15:53:24', '', 4, 4, 'Structure already exists', '   ', '', 4, 3);
+	
+	CREATE TABLE picture (
+	  IDPicture int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  PathOfPicture text NOT NULL
+	)  ;
+	
+	CREATE TABLE project (
+	  IDProject int NOT NULL,
+	  NameProject text NOT NULL,
+	  DateProject timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO project (IDProject, NameProject, DateProject) VALUES
+	(4, 'Propagating SW through domain wall', '2019-03-16 22:32:57'),
+	(5, 'Curved magnetism', '2019-03-18 21:40:15');
+	
+	CREATE TABLE sample (
+	  IDSample int NOT NULL,
+	  NameSample text NOT NULL,
+	  Description text NOT NULL,
+	  dateSample timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)  ;
+	
+	INSERT INTO sample (IDSample, NameSample, Description, dateSample) VALUES
+	(2, 'C15', 'Metastable crystal iron 16nm cu(100)', '2019-03-16 22:33:32'),
+	(3, 'C16', 'Another crystal', '2019-03-16 22:35:25');
+	
+	CREATE TABLE setup (
+	  SetupID int NOT NULL,
+	  SetupName text NOT NULL,
+	  DescriptionSetup text NOT NULL,
+	  DateSetup timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
+	)   ;
+	
+	INSERT INTO setup (SetupID, SetupName, DescriptionSetup, DateSetup) VALUES
+	(4, 'BLS1', 'Conventional + uBLS in Dresden', '2019-03-16 22:33:59'),
+	(5, 'BLS2', 'uBLS. Torus LASER.', '2019-03-18 21:37:48');
+	
+	CREATE TABLE structure (
+	  IDStructure int NOT NULL,
+	  StructureName text NOT NULL,
+	  StructureDescription text NOT NULL,
+	  StructureDate timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  IDSample int NOT NULL
+	)  ;
+	
+	INSERT INTO structure (IDStructure, StructureName, StructureDescription, StructureDate, IDSample) VALUES
+	(3, 'Waveguides + antenna', 'Left: sweep through distance of domain wall pinning centerrnright: sweep through dose', '2019-03-16 22:34:59', 2),
+	(4, 'Funny structure', 'Realy', '2019-03-16 22:35:40', 3),
+	(5, 'StructureName', 'Structure was created during measurment on setup xx. Measurment was named xx.', '2019-03-17 15:09:46', 3),
+	(7, 'New structure', 'Structure was created during measurment on setup ?. Measurment was named ?.', '2019-03-17 15:17:07', 2),
+	(8, 'NewStruct', 'Structure was created during measurment on setup ?. Measurment was named M1 -sweep field.', '2019-03-17 15:35:21', 2),
+	(9, 'NovaNa16', 'Structure was created during measurment. Measurment was named .', '2019-03-17 15:47:02', 3),
+	(10, 'VeryNewStructure', 'Structure was created during measurment. Measurment was named M1 -sweep field.', '2019-03-17 15:51:12', 2);
+	
+	
+	CREATE TABLE userlog (
+	  IDUserLog int NOT NULL,
+	  IDLogMeasurement int NOT NULL,
+	  IDUser int NOT NULL
+	)   ;
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD PRIMARY KEY (IDLog);
+	
+	ALTER TABLE picture
+	  ADD PRIMARY KEY (IDPicture);
+	
+	ALTER TABLE project
+	  ADD PRIMARY KEY (IDProject);
+	
+	ALTER TABLE sample
+	  ADD PRIMARY KEY (IDSample);
+	
+	ALTER TABLE setup
+	  ADD PRIMARY KEY (SetupID);
+	
+	ALTER TABLE structure
+	  ADD PRIMARY KEY (IDStructure),
+	  ADD KEY IDSample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD PRIMARY KEY (IDUserLog),
+	  ADD KEY IDLog (IDLogMeasurement,IDUser),
+	  ADD KEY IDUser (IDUser);
+	
+	
+	ALTER TABLE logmeasurement
+	  ADD CONSTRAINT logmeasurement_ibfk_2 FOREIGN KEY (IDProject) REFERENCES project (IDProject),
+	  ADD CONSTRAINT logmeasurement_ibfk_3 FOREIGN KEY (IDStructure) REFERENCES structure (IDStructure),
+	  ADD CONSTRAINT logmeasurement_ibfk_4 FOREIGN KEY (IDSetup) REFERENCES Setup (SetupID),
+	  ADD CONSTRAINT logmeasurement_ibfk_5 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE picture
+	  ADD CONSTRAINT picture_ibfk_1 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	
+	ALTER TABLE structure
+	  ADD CONSTRAINT structure_ibfk_2 FOREIGN KEY (IDSample) REFERENCES sample (IDSample);
+	
+	ALTER TABLE userlog
+	  ADD CONSTRAINT userlog_ibfk_2 FOREIGN KEY (IDLogMeasurement) REFERENCES logmeasurement (IDLog);
+	COMMIT;
+	
+	/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+	/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+	/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	
+2019-03-23 23:33:25.167 CET [296] WARNING:  there is no transaction in progress
+2019-03-24 00:42:52.507 CET [18196] LOG:  received fast shutdown request
+2019-03-24 00:42:52.518 CET [25112] ERROR:  canceling statement due to user request
+2019-03-24 00:42:52.526 CET [18196] LOG:  aborting any active transactions
+2019-03-24 00:42:52.530 CET [27348] FATAL:  terminating connection due to administrator command
+2019-03-24 00:42:52.533 CET [20368] FATAL:  terminating connection due to administrator command
+2019-03-24 00:42:52.535 CET [26924] FATAL:  terminating connection due to administrator command
+2019-03-24 00:42:52.540 CET [8556] FATAL:  terminating connection due to administrator command
+2019-03-24 00:42:52.565 CET [23420] FATAL:  terminating connection due to administrator command
+2019-03-24 00:42:52.570 CET [25812] FATAL:  terminating connection due to administrator command
+2019-03-24 00:42:52.571 CET [18196] LOG:  background worker "logical replication launcher" (PID 25112) exited with exit code 1
+2019-03-24 00:42:52.592 CET [26840] LOG:  shutting down
+2019-03-24 00:42:52.765 CET [18196] LOG:  database system is shut down

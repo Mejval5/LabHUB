@@ -8,30 +8,16 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 from labhub import app, db
 
-from labhub.lib.forms import LrManipulateForm, LoginForm, CreateUserForm, EditActivityForm, DeleteActivityForm, ScannerAddForm, OwnerEditForm, OwnerNoteForm, OwnerTagForm, AddVideo, DownloadOne
+from labhub.lib.forms import LoginForm, CreateUserForm
 from labhub.lib.pagination import Pagination
 
 from labhub.user import User
 
-import pandas as pd
-import unicodecsv as csv
-from io import BytesIO
-
-def _default_params(args):
-    """
-    Suport function for parsing order and page args.
-    """
-    return {
-        "order_by": args.get("order_by", "").lower(),
-        "order_dir": args.get("order_dir", "asc").lower(),
-        "page": args.get("page", 1) if not bool(args.get("filtered")) else 1,
-        "per_page": args.get("per_page", 30),
-    }
-
 @app.route("/")
 @app.route("/index/")
+@login_required
 def index():
-    return redirect(url_for("login"))
+    return render_template("index.html")
 
 ##################
 # routes with view
@@ -41,7 +27,7 @@ def index():
 def login():
     # send logged user away
     if current_user.is_authenticated:
-        return redirect(url_for("login"))
+        return redirect(url_for("index"))
 
     form = LoginForm(request.form)
 
@@ -50,7 +36,7 @@ def login():
 
         if user.verify(form.password.data):
             login_user(user)
-            return redirect(url_for("login"))
+            return redirect(url_for("index"))
 
         else:
             flash(u"Špatná kombinace jména a hesla.", "error")
@@ -70,10 +56,15 @@ def forgotten_password():
     # parse post
     return render_template("forgotten_password.html")
 
-
 @app.route("/users/")
 def users():
     return render_template("users.html", guu=u"lol")
+
+@app.route("/funPage/")
+def funPage():
+    return render_template("funPage.html")
+
+
 
 
 # @app.route("/user_detail/")

@@ -1,22 +1,9 @@
 {%- extends "bootstrap/base.html" %}
 
-{% block title %}Petrov -
+{% block title %}LABhub -
   {% if request.endpoint == "login" %}login
-  {% elif request.endpoint == "lvs" %}přehled lv
-  {% elif request.endpoint == "downloads" %}stahování
-  {% elif request.endpoint == "scans" %}scanování
-  {% elif request.endpoint == "scans_add" %}přidání katastru
-  {% elif request.endpoint == "land_registers" %}katastry
-  {% elif request.endpoint == "owners" %}vlastníci
-  {% elif request.endpoint == "owner_detail" %}detail vlastníka
-  {% elif request.endpoint == "owner_edit" %}úprava vlastníka
-  {% elif request.endpoint == "estates" %}pozemky
-  {% elif request.endpoint == "activities" %}aktivity
-  {% elif request.endpoint == "activity_edit" %}úprava aktivity
-  {% elif request.endpoint == "activity_add" %}přidání aktivity
-  {% elif request.endpoint == "user_create" %}přidání uživatele
-  {% elif request.endpoint == "calendar" %}kalendář
-  {% elif request.endpoint == "reload" %}Reload{% endif %}
+  {% elif request.endpoint == "index" %}Vítejte
+{% endif %}
 {% endblock %}
 
 {% import "bootstrap/fixes.html" as fixes %}
@@ -29,7 +16,7 @@
 
 {% block styles %}
   {{ super() }}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/petrov.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/labhub.css') }}">
 {% endblock %}
 
 {% block navbar %}
