@@ -25,7 +25,7 @@ git clone https://github.com/Mejval5/LabHUB.git
 ### Set up Flask  
 
 **To set starting file for the server do these two commands:**  
-set FLASK_APP=runserver.py
+set FLASK_APP=runserver.py  
 set FLASK_ENV=development
 
 ### To initialize sql
@@ -33,8 +33,8 @@ set FLASK_ENV=development
 (SELECT crypt('PutYourPasswordHere', salt) FROM salt)
 
 **Then run these commands**
-createdb -h localhost -p 5432 sciencedata
-pg_ctl -D database -l logs/dbLog.log start
+createdb -h localhost -p 5432 sciencedata  
+pg_ctl -D database -l logs/dbLog.log start  
 
 **When prompted by the next command write this password: Nejlepsi69Science**
 createuser -s -P labhub
