@@ -18,7 +18,7 @@ Probably you should copy it to (\AppData\Local\conda\conda\envs\labhub)
 
 ### Get this project:  
 **Go to location of your project, can be anywhere, (cd ...) go to it and do this commands**  
-git clone https://github.com/Mejval5/SciHub.git
+git clone https://github.com/Mejval5/LabHUB.git
 
 **Set up git, there will be two commands which you do displayed**  
 
@@ -28,11 +28,12 @@ git clone https://github.com/Mejval5/SciHub.git
 set FLASK_APP=runserver.py
 set FLASK_ENV=development
 
-###To initialize sql
+### To initialize sql
 **Go to sql/init.sql and add your password to the file at this line:**  
 (SELECT crypt('PutYourPasswordHere', salt) FROM salt)
 
-**Then run these commands**  
+**Then run these commands**
+pginit
 pg_ctl -D database -l logs/dbLog.log start  
 psql -d sciencedata -a -f sql/init.sql
 
