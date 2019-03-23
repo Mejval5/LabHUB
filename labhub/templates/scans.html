@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+
+<div class="header">
+  <h1>Správce scanování</h1>
+</div>
+
+{% if current %}
+  <div class="switch_scan">
+    <table class="switch_scan">
+      <tr>
+        {% if current.active %}
+          <td>
+            <h3>Zastavit scanování:</h3>
+          </td>
+          <td>
+            <form method="post" action={{ url_for("stop_scan") }}>
+              <input type="image" src={{ url_for("static", filename="img/stop.png") }} alt="zastavit scanování" title="zastavit scanování" style="width:50px;height:50px;"/>
+            </form>
+          </td>
+        {% else %}
+          <td>
+            <h3>Spustit scanování:</h3>
+          </td>
+          <td>
+            <form method="post" action={{ url_for("start_scan") }}>
+              <input type="image" src={{ url_for("static", filename="img/start.png") }} alt="spustit scanování" title="spustit scanování" style="width:50px;height:50px;"/>
+            </form>
+          </td>
+        {% endif %}
+      </tr>
+    </table>
+  </div>
+{% endif %}
+
+<br>
+
+<div class="download_bar">
+  <table>
+    <tr>
+      <th>Číslo registru</th>
+      <th>Lokalita</th>
+      <th>Celkem LV</th>
+      <th>Naskenováno</th>
+      <th>Délka scanování</th>
+      {% if current %}
+        <th colspan="2">Možnosti</th>
+      {% else %}
+        <th>Možnosti</th>
+      {% endif %}
+    </tr>
+    <tr>
+      {% if current %}
+        <td>{{ current.lr_number }} </td>
+        <td>{{ current.locality }} </td>
+        <td>{{ current.lv_count }} </td>
+        <td title={{ current.completeness }}>{{ current.completeness }}</td>
+        <td>{{ current.finish }} </td>
+        <td>
+          <a title="zobrazit lv" href={{ url_for("lvs", locality=current.lr_number) }}>
+            <img src={{ url_for("static", filename="img/view.png") }} alt="zobrazit lv" style="width:25px;height:25px">
+          </a>
+        </td>
+        <td>
+          <form method="post" action={{ url_for("delete_from_scan_bar") }}>
+            <input type="hidden" name="lr_number" value={{ current.lr_number }} />
+            <input type="image" src={{ url_for("static", filename="img/delete.png") }} alt="Zrušit scanování" title="Zrušit scanování" style="width:25px;height:25px;"/>
+          </form>
+        </td>
+      {% else %}
+        <td>-<td>
+        <td>-<td>
+        <td>-<td>
+        <td>-<td>
+        <td>-<td>
+        <td>-<td>
+      {% endif %}
+    </tr>
+  </table>
+</div>
+
+<br>
+<a title="Přidat katastr" href={{ url_for("scans_add") }}>
+  <img src={{ url_for("static", filename="img/add.png") }} alt="Přidat katastr" style="width:40px;height:40px">
+</a>
+<br>
+
+<div class="download_queue">
+  <table>
+    <tr>
+      <th>Číslo registru</th>
+      <th>Lokalita</th>
+      <th>Celkem LV</th>
+      <th>Naskenováno</th>
+      <th>Délka scanování</th>
+      <th colspan="4">Možnosti</th>
+    </tr>
+    {% for line in queue %}
+      <tr>
+        <td>{{ line.lr_number}} </td>
+        <td>{{ line.locality }} </td>
+        <td>{{ line.lv_count }} </td>
+        <td title={{ line.completeness }}>{{ line.completeness }}</td>
+        <td>{{ line.finish }} </td>
+        <td>
+          <form method=post action={{ url_for("prior_scan") }}>
+            <input type="hidden" name="lr_number" value={{ line.lr_number }} />
+            <input type="image" src={{ url_for("static", filename="img/download.png") }} alt="začít stahovat okamžitě" title="začít stahovat okamžitě" style="width:25px;height:25px;"/>
+          </form>
+        </td>
+        <td>
+          <form method=post action={{ url_for("scan_queue_up") }}>
+            <input type="hidden" name="lr_number" value={{ line.lr_number }} />
+            <input type="image" src={{ url_for("static", filename="img/up.png") }} alt="posunout nahoru" title="posunout nahoru" style="width:25px;height:25px;"/>
+          </form>
+        </td>
+        <td>
+          <form method=post action={{ url_for("scan_queue_down") }}>
+            <input type="hidden" name="lr_number" value={{ line.lr_number }} />
+            <input type="image" src={{ url_for("static", filename="img/down.png") }} alt="posuout dolů"  title="posunout dolů" style="width:25px;height:25px;"/>
+          </form>
+        </td>
+        <td>
+          <form method=post action={{ url_for("delete_from_scan_queue") }}>
+            <input type="hidden" name="lr_number" value={{ line.lr_number }} />
+            <input type="image" src={{ url_for("static", filename="img/delete.png") }} alt="odstranit z fronty" title="odstranit z fronty" style="width:25px;height:25px;"/>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

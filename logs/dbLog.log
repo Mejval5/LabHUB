@@ -1,0 +1,357 @@
+2019-03-23 14:42:05.200 CET [14324] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 14:42:05.201 CET [14324] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 14:42:05.236 CET [1672] LOG:  database system was shut down at 2019-03-23 14:41:58 CET
+2019-03-23 14:42:05.266 CET [14324] LOG:  database system is ready to accept connections
+2019-03-23 14:49:44.564 CET [18824] ERROR:  role "scihub" already exists
+2019-03-23 14:49:44.564 CET [18824] STATEMENT:  CREATE ROLE scihub PASSWORD 'md58f93cf5d5f169bedcc475c9e25efeac3' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;
+2019-03-23 14:51:59.610 CET [8076] FATAL:  database "database" does not exist
+2019-03-23 14:52:03.658 CET [3508] FATAL:  database "Raccoon5" does not exist
+2019-03-23 14:52:41.401 CET [12796] FATAL:  database "database" does not exist
+2019-03-23 14:52:43.722 CET [20940] FATAL:  database "database" does not exist
+2019-03-23 14:54:23.043 CET [1196] FATAL:  database "Raccoon5" does not exist
+2019-03-23 14:55:53.294 CET [14324] LOG:  received fast shutdown request
+2019-03-23 14:55:53.297 CET [14324] LOG:  aborting any active transactions
+2019-03-23 14:55:53.314 CET [14324] LOG:  background worker "logical replication launcher" (PID 2448) exited with exit code 1
+2019-03-23 14:55:53.315 CET [10920] LOG:  shutting down
+2019-03-23 14:55:53.364 CET [14324] LOG:  database system is shut down
+2019-03-23 14:56:05.632 CET [19684] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 14:56:05.632 CET [19684] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 14:56:05.666 CET [12760] LOG:  database system was shut down at 2019-03-23 14:55:53 CET
+2019-03-23 14:56:05.695 CET [19684] LOG:  database system is ready to accept connections
+2019-03-23 14:56:07.761 CET [8196] FATAL:  database "database" does not exist
+2019-03-23 15:33:12.880 CET [19684] LOG:  background worker "logical replication launcher" (PID 3348) was terminated by exception 0xC000013A
+2019-03-23 15:33:12.880 CET [19684] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2019-03-23 15:33:12.880 CET [19684] LOG:  terminating any other active server processes
+2019-03-23 15:33:12.881 CET [16328] WARNING:  terminating connection because of crash of another server process
+2019-03-23 15:33:12.881 CET [16328] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-03-23 15:33:12.881 CET [16328] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-03-23 15:33:12.898 CET [19684] LOG:  statistics collector process (PID 5604) was terminated by exception 0xC000013A
+2019-03-23 15:33:12.898 CET [19684] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2019-03-23 15:33:12.899 CET [19684] LOG:  all server processes terminated; reinitializing
+2019-03-23 15:33:12.923 CET [6780] LOG:  database system was interrupted; last known up at 2019-03-23 15:01:05 CET
+2019-03-23 15:33:13.074 CET [6780] LOG:  database system was not properly shut down; automatic recovery in progress
+2019-03-23 15:33:13.082 CET [6780] LOG:  redo starts at 0/15E2F48
+2019-03-23 15:33:13.082 CET [6780] LOG:  invalid record length at 0/15E3028: wanted 24, got 0
+2019-03-23 15:33:13.082 CET [6780] LOG:  redo done at 0/15E2FF0
+2019-03-23 15:33:13.121 CET [19684] LOG:  database system is ready to accept connections
+2019-03-23 15:48:10.775 CET [18332] ERROR:  canceling statement due to user request
+2019-03-23 15:48:10.775 CET [19684] LOG:  received fast shutdown request
+2019-03-23 15:48:10.781 CET [19684] LOG:  aborting any active transactions
+2019-03-23 15:48:10.781 CET [7460] FATAL:  terminating connection due to administrator command
+2019-03-23 15:48:10.788 CET [19684] LOG:  background worker "logical replication launcher" (PID 18332) exited with exit code 1
+2019-03-23 15:48:10.800 CET [16024] LOG:  shutting down
+2019-03-23 15:48:10.846 CET [19684] LOG:  database system is shut down
+2019-03-23 15:49:36.967 CET [6916] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 15:49:36.968 CET [6916] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 15:49:37.008 CET [19324] LOG:  database system was shut down at 2019-03-23 15:48:10 CET
+2019-03-23 15:49:37.039 CET [6916] LOG:  database system is ready to accept connections
+2019-03-23 15:50:55.996 CET [6916] LOG:  received fast shutdown request
+2019-03-23 15:50:55.999 CET [6916] LOG:  aborting any active transactions
+2019-03-23 15:50:56.015 CET [6916] LOG:  background worker "logical replication launcher" (PID 9884) exited with exit code 1
+2019-03-23 15:50:56.018 CET [14268] LOG:  shutting down
+2019-03-23 15:50:56.070 CET [6916] LOG:  database system is shut down
+2019-03-23 15:51:00.803 CET [17688] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 15:51:00.803 CET [17688] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 15:51:00.837 CET [8468] LOG:  database system was shut down at 2019-03-23 15:50:56 CET
+2019-03-23 15:51:00.865 CET [17688] LOG:  database system is ready to accept connections
+2019-03-23 15:53:31.407 CET [8852] ERROR:  relation "users" does not exist at character 112
+2019-03-23 15:53:31.407 CET [8852] STATEMENT:  
+	            SELECT
+	                u.pswd_hash = crypt('saf', u.salt) AS hit
+	            FROM
+	                users u
+	            WHERE
+	                login = 'Raccoon5'
+	        
+2019-03-23 16:02:26.677 CET [12924] ERROR:  canceling statement due to user request
+2019-03-23 16:02:26.677 CET [17688] LOG:  received fast shutdown request
+2019-03-23 16:02:26.683 CET [17688] LOG:  aborting any active transactions
+2019-03-23 16:02:26.683 CET [8852] FATAL:  terminating connection due to administrator command
+2019-03-23 16:02:26.689 CET [17688] LOG:  background worker "logical replication launcher" (PID 12924) exited with exit code 1
+2019-03-23 16:02:26.700 CET [5280] LOG:  shutting down
+2019-03-23 16:02:26.738 CET [17688] LOG:  database system is shut down
+2019-03-23 16:03:14.381 CET [3240] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 16:03:14.382 CET [3240] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 16:03:14.417 CET [21184] LOG:  database system was shut down at 2019-03-23 16:02:26 CET
+2019-03-23 16:03:14.451 CET [3240] LOG:  database system is ready to accept connections
+2019-03-23 16:06:25.155 CET [20208] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:08:01.117 CET [18236] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:08:42.540 CET [17308] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:08:46.485 CET [12296] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:09:17.226 CET [5824] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:09:26.520 CET [4068] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:14:16.127 CET [10172] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:14:17.132 CET [2068] ERROR:  canceling statement due to user request
+2019-03-23 16:14:17.132 CET [3240] LOG:  received fast shutdown request
+2019-03-23 16:14:17.135 CET [3240] LOG:  aborting any active transactions
+2019-03-23 16:14:17.135 CET [17280] FATAL:  terminating connection due to administrator command
+2019-03-23 16:14:17.136 CET [1536] FATAL:  terminating connection due to administrator command
+2019-03-23 16:14:17.150 CET [3240] LOG:  background worker "logical replication launcher" (PID 2068) exited with exit code 1
+2019-03-23 16:14:17.159 CET [1672] LOG:  shutting down
+2019-03-23 16:14:17.196 CET [3240] LOG:  database system is shut down
+2019-03-23 16:14:20.590 CET [12964] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 16:14:20.590 CET [12964] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 16:14:20.626 CET [3056] LOG:  database system was shut down at 2019-03-23 16:14:17 CET
+2019-03-23 16:14:20.657 CET [12964] LOG:  database system is ready to accept connections
+2019-03-23 16:15:38.007 CET [14140] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:15:49.488 CET [8736] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:15:53.454 CET [5704] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:32:07.129 CET [8412] ERROR:  canceling statement due to user request
+2019-03-23 16:32:07.130 CET [12964] LOG:  received fast shutdown request
+2019-03-23 16:32:07.134 CET [12964] LOG:  aborting any active transactions
+2019-03-23 16:32:07.134 CET [2436] FATAL:  terminating connection due to administrator command
+2019-03-23 16:32:07.135 CET [7036] FATAL:  terminating connection due to administrator command
+2019-03-23 16:32:07.144 CET [12964] LOG:  background worker "logical replication launcher" (PID 8412) exited with exit code 1
+2019-03-23 16:32:07.157 CET [19648] LOG:  shutting down
+2019-03-23 16:32:07.204 CET [12964] LOG:  database system is shut down
+2019-03-23 16:35:52.240 CET [5188] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 16:35:52.240 CET [5188] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 16:35:52.274 CET [16736] LOG:  database system was shut down at 2019-03-23 16:32:07 CET
+2019-03-23 16:35:52.302 CET [5188] LOG:  database system is ready to accept connections
+2019-03-23 16:35:54.463 CET [18644] ERROR:  relation "contacts" does not exist
+2019-03-23 16:35:54.463 CET [18644] STATEMENT:  CREATE TABLE users(
+	    id serial PRIMARY KEY,
+	    login text UNIQUE NOT NULL,
+	    name text UNIQUE NOT NULL,
+	    id_contact integer REFERENCES contacts(id),
+	    salt text NOT NULL,
+	    pswd_hash text NOT NULL
+	);
+2019-03-23 16:35:54.491 CET [18644] ERROR:  syntax error at or near "INSERT" at character 222
+2019-03-23 16:35:54.491 CET [18644] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Ondra',
+	    'Ondra',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	)
+2019-03-23 16:36:15.964 CET [2292] ERROR:  relation "contacts" does not exist
+2019-03-23 16:36:15.964 CET [2292] STATEMENT:  CREATE TABLE users(
+	    id serial PRIMARY KEY,
+	    login text UNIQUE NOT NULL,
+	    name text UNIQUE NOT NULL,
+	    id_contact integer REFERENCES contacts(id),
+	    salt text NOT NULL,
+	    pswd_hash text NOT NULL
+	);
+2019-03-23 16:36:15.978 CET [2292] ERROR:  function gen_salt(unknown) does not exist at character 27
+2019-03-23 16:36:15.978 CET [2292] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-03-23 16:36:15.978 CET [2292] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	);
+2019-03-23 16:36:16.003 CET [2292] ERROR:  syntax error at or near "INSERT" at character 171
+2019-03-23 16:36:16.003 CET [2292] STATEMENT:  INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Ondra',
+	    'Ondra',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	);
+2019-03-23 16:36:36.751 CET [15604] ERROR:  relation "contacts" does not exist
+2019-03-23 16:36:36.751 CET [15604] STATEMENT:  CREATE TABLE users(
+	    id serial PRIMARY KEY,
+	    login text UNIQUE NOT NULL,
+	    name text UNIQUE NOT NULL,
+	    id_contact integer REFERENCES contacts(id),
+	    salt text NOT NULL,
+	    pswd_hash text NOT NULL
+	);
+2019-03-23 16:36:36.766 CET [15604] ERROR:  function gen_salt(unknown) does not exist at character 27
+2019-03-23 16:36:36.766 CET [15604] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-03-23 16:36:36.766 CET [15604] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	);
+2019-03-23 16:36:36.779 CET [15604] ERROR:  relation "users" does not exist at character 13
+2019-03-23 16:36:36.779 CET [15604] STATEMENT:  INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Ondra',
+	    'Ondra',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	);
+2019-03-23 16:38:02.343 CET [5336] ERROR:  syntax error at or near ")" at character 103
+2019-03-23 16:38:02.343 CET [5336] STATEMENT:  CREATE TABLE contacts(
+	    id serial PRIMARY KEY,
+	    mail text,
+	    phone text,
+	    university text,
+	);
+2019-03-23 16:38:02.370 CET [5336] ERROR:  relation "contacts" does not exist
+2019-03-23 16:38:02.370 CET [5336] STATEMENT:  CREATE TABLE users(
+	    id serial PRIMARY KEY,
+	    login text UNIQUE NOT NULL,
+	    name text UNIQUE NOT NULL,
+	    id_contact integer REFERENCES contacts(id),
+	    salt text NOT NULL,
+	    pswd_hash text NOT NULL
+	);
+2019-03-23 16:38:02.387 CET [5336] ERROR:  function gen_salt(unknown) does not exist at character 27
+2019-03-23 16:38:02.387 CET [5336] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-03-23 16:38:02.387 CET [5336] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	);
+2019-03-23 16:38:02.399 CET [5336] ERROR:  relation "users" does not exist at character 13
+2019-03-23 16:38:02.399 CET [5336] STATEMENT:  INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Ondra',
+	    'Ondra',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	);
+2019-03-23 16:38:35.538 CET [11936] ERROR:  syntax error at or near ")" at character 103
+2019-03-23 16:38:35.538 CET [11936] STATEMENT:  CREATE TABLE contacts(
+	    id serial PRIMARY KEY,
+	    mail text,
+	    phone text,
+	    university text,
+	);
+2019-03-23 16:38:35.567 CET [11936] ERROR:  relation "contacts" does not exist
+2019-03-23 16:38:35.567 CET [11936] STATEMENT:  CREATE TABLE users(
+	    id serial PRIMARY KEY,
+	    login text UNIQUE NOT NULL,
+	    name text UNIQUE NOT NULL,
+	    id_contact integer REFERENCES contacts(id),
+	    salt text NOT NULL,
+	    pswd_hash text NOT NULL
+	);
+2019-03-23 16:38:35.582 CET [11936] ERROR:  function gen_salt(unknown) does not exist at character 27
+2019-03-23 16:38:35.582 CET [11936] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-03-23 16:38:35.582 CET [11936] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	);
+2019-03-23 16:38:35.597 CET [11936] ERROR:  relation "users" does not exist at character 13
+2019-03-23 16:38:35.597 CET [11936] STATEMENT:  INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Ondra',
+	    'Ondra',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	);
+2019-03-23 16:39:40.860 CET [21072] ERROR:  function gen_salt(unknown) does not exist at character 27
+2019-03-23 16:39:40.860 CET [21072] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-03-23 16:39:40.860 CET [21072] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	);
+2019-03-23 16:39:40.874 CET [21072] ERROR:  relation "salt" does not exist at character 111
+2019-03-23 16:39:40.874 CET [21072] STATEMENT:  INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Ondra',
+	    'Ondra',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	);
+2019-03-23 16:42:06.106 CET [11708] FATAL:  database "Raccoon5" does not exist
+2019-03-23 16:42:22.816 CET [19768] ERROR:  relation "salt" does not exist at character 111
+2019-03-23 16:42:22.816 CET [19768] STATEMENT:  INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Ondra',
+	    'Ondra',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	);
+2019-03-23 16:44:55.162 CET [16488] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-23 16:44:55.162 CET [16488] LOG:  unexpected EOF on client connection with an open transaction
+2019-03-23 16:47:24.894 CET [16848] ERROR:  canceling statement due to user request
+2019-03-23 16:47:24.895 CET [5188] LOG:  received fast shutdown request
+2019-03-23 16:47:24.899 CET [5188] LOG:  aborting any active transactions
+2019-03-23 16:47:24.899 CET [1880] FATAL:  terminating connection due to administrator command
+2019-03-23 16:47:24.899 CET [12296] FATAL:  terminating connection due to administrator command
+2019-03-23 16:47:24.906 CET [5188] LOG:  background worker "logical replication launcher" (PID 16848) exited with exit code 1
+2019-03-23 16:47:24.918 CET [3836] LOG:  shutting down
+2019-03-23 16:47:24.963 CET [5188] LOG:  database system is shut down
+2019-03-23 17:05:07.382 CET [10748] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 17:05:07.383 CET [10748] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 17:05:07.422 CET [12972] LOG:  database system was shut down at 2019-03-23 16:47:24 CET
+2019-03-23 17:05:07.451 CET [10748] LOG:  database system is ready to accept connections
+2019-03-23 17:10:16.484 CET [11912] ERROR:  canceling statement due to user request
+2019-03-23 17:10:16.484 CET [10748] LOG:  received fast shutdown request
+2019-03-23 17:10:16.488 CET [10748] LOG:  aborting any active transactions
+2019-03-23 17:10:16.489 CET [20816] FATAL:  terminating connection due to administrator command
+2019-03-23 17:10:16.499 CET [10748] LOG:  background worker "logical replication launcher" (PID 11912) exited with exit code 1
+2019-03-23 17:10:16.512 CET [16064] LOG:  shutting down
+2019-03-23 17:10:16.558 CET [10748] LOG:  database system is shut down

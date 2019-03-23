@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="login_form">
+    <form action={{ url_for("login") }} method="post">
+      <table>
+        <tr>
+          <th colspan="2">Přihlášení</th>
+        </tr>
+
+        <tr>
+          <td>login:</td>
+          <td>
+            <input type="text" name="username" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td>heslo:</td>
+          <td>
+            <input type="password" name="password" required>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <input type="submit" value="Přihlásit">
+          </td>
+
+          <td>
+            <a title="zapomenuté heslo" href={{ url_for("forgotten_password") }}>zapomenuté heslo</a>
+          </td>
+      </table>
+    </form>
+  </div>
+{% endblock %}

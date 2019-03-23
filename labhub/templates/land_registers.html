@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% import 'pagination_macro.html' as pm %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="header">
+    <h1>Přehled stažených katastrů</h1>
+  </div>
+
+  <div class="filter">
+    <form action={{ url_for("land_registers") }}>
+      <input type="hidden" name="order_by" value={{ order_by }} />
+      <input type="hidden" name="order_dir" value={{ order_dir }} />
+      <input type="hidden" name="page" value={{ page }} />
+      <input type="hidden" name="per_page" value={{ per_page }} />
+
+      <table>
+        <tr>
+          <th>Katastr</th>
+          <th>Úplnost</th>
+          <th></th>
+        </tr>
+
+        <tr>
+        <td>
+          <input name="locality" type="text" placeholder="Jméno nebo číslo katastru" {% if filters.locality %}value={{ filters.locality }}{% endif %}>
+        </td>
+
+          <td>
+            <select name="completeness">
+                <option value="all" {% if filters.completeness=="all" %}selected=""{% endif %}>Všechny katastry</option>
+                <option value="true" {% if filters.completeness=="true" %}selected=""{% endif %}>Pouze kompletní</option>
+                <option value="false" {% if filters.completeness=="false" %}selected=""{% endif %}>Pouze nekompletní</option>
+            </select>
+          </td>
+
+          <td>
+            <input name="filtered" value="Vybrat" type="submit">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="data_table">
+    <table>
+      <tr>
+        <th>Číslo</th>
+
+        <th>
+          <a title="řadit podle čísla katastru vzestupně" href={{ url_for("land_registers", order_by="reg_number", order_dir="asc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle čísla katastru sestupně" href={{ url_for("land_registers", order_by="reg_number", order_dir="desc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Lokalita</th>
+
+        <th>
+          <a title="řadit podle lokality vzestupně" href={{ url_for("land_registers", order_by="locality", order_dir="asc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle lokality sestupně" href={{ url_for("land_registers", order_by="locality", order_dir="desc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Počet LV</th>
+
+        <th>
+          <a title="řadit podle počtu lv vzestupně" href={{ url_for("land_registers", order_by="lv_count", order_dir="asc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle počtu lv sestupně" href={{ url_for("land_registers", order_by="lv_count", order_dir="desc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Načteno</th>
+
+        <th>
+          <a title="řadit podle stažených vzestupně" href={{ url_for("land_registers", order_by="completeness", order_dir="asc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle stažených sestupně" href={{ url_for("land_registers", order_by="completeness", order_dir="desc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Staženo</th>
+
+        <th>
+          <a title="řadit podle stažených vzestupně" href={{ url_for("land_registers", order_by="completeness", order_dir="asc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle stažených sestupně" href={{ url_for("land_registers", order_by="completeness", order_dir="desc", complete=filters.complete, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Možnosti</th>
+      </tr>
+      {% for reg in data %}
+        <tr>
+          <td colspan="3">
+            <a title="Detail pro {{ reg.locality }}" href={{ url_for("lvs", lr_number=reg.lr_number) }}>
+              {{ reg.lr_number }}
+            </a>
+          </td>
+          <td colspan="3">{{ reg.locality }}</td>
+          <td colspan="3">{{ reg.lv_count }}</td>
+          <td colspan="3">{{ reg.scanned }}</td>
+          <td colspan="3">{{ reg.downloaded }}</td>
+          <td>
+            {#<!-- {% if reg.scanned != reg.lv_count %}
+              <img title="nelze stahovat - scanování katastru není kompletní" src={{ url_for("static", filename="img/error.png") }} alt="není oscanované">
+            {% elif reg.queued %} -->#}
+            {% if reg.queued %}
+              <img title="katastr je stahován" src={{ url_for("static", filename="img/checked.png") }} alt="stahování probíhá">
+            {% elif reg.downloaded == reg.lv_count %}
+              <img title="stahování dokončeno" src={{ url_for("static", filename="img/checked.png") }} alt="stahování dokončeno">
+            {% else %}
+              <form method=post action={{ url_for("append_to_download_queue") }}>
+                <input type="hidden" name="lr_number" value={{ reg.lr_number }} />
+                <input type="image" src={{ url_for("static", filename="img/add.png") }} alt="přidat do fronty na stažení" title="přidat do fronty na stažení"/>
+              </form>
+
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+
+  <div class="pagination">
+  {{ pm.render(pagination, "land_registers", order_by=order_by, order_dir=order_dir, complete=filters.complete, per_page=per_page) }}
+  </div>
+{% endblock %}

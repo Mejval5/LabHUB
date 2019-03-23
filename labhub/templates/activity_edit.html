@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="user_detail_name">
+    <h2>{{ owner.name }}</h2>
+  </div>
+
+  <div class="activity_action">
+    <h3>{{ action }} událost</h3>
+  </div>
+
+  <div class="detail_edit">
+    <form action={{ url_for("activity_save") }} method="post">
+      {% if act_id %}
+        <input type="hidden" name="act_id" value={{ act_id }} />
+      {% endif %}
+      <input type="hidden" name="owner" value={{ owner.id }} />
+
+      <table>
+        <tr>
+          <td>Forma:</td>
+          <td>
+            <select name="channel" required>
+              <option value="" {% if not channel %}selected=""{% endif %}>Vyberte formu</option>
+              <option value="phone" {% if channel=="phone" %}selected=""{% endif %}>Telefon</option>
+              <option value="post" {% if channel=="post" %}selected=""{% endif %}>Pošta</option>
+              <option value="mail" {% if channel=="mail" %}selected=""{% endif %}>Email</option>
+              <option value="personal" {% if channel=="personal" %}selected=""{% endif %}>Osobní</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Datum:</td>
+          <td><input type="text" name="date" placeholder="YYYY-MM-DD" {% if date %}value={{- date }}{% endif %} required></td>
+        </tr>
+
+        <tr>
+          <td>Výsledek:</td>
+          <td>
+            <select name="result">
+              <option value="None" {% if result=="None" %}selected=""{% endif %}>žádný</option>
+              <option value="True" {% if result=="True" %}selected=""{% endif %}>úspěch</option>
+              <option value="False" {% if result=="False" %}selected=""{% endif %}>neúspěch</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Poznámka:</td>
+          <td><textarea name="note" placeholder="Poznámka ke komunikaci">{{ note }}</textarea></td>
+        </tr>
+
+        <tr colspan="2">
+          <td><input type="submit" value="Uložit"></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+{% endblock %}

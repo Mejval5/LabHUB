@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% import 'pagination_macro.html' as pm %}
+
+{% block content %}
+  {{ super() }}
+
+  <div class="header">
+    {% if tru %}<h1>{{ owner.name }}</h1>{% else %}<h1>Přehled pozemků</h1>{% endif %}
+  </div>
+
+  <div class="filter">
+    <form action={{ url_for("estates") }}>
+      <input type="hidden" name="order_by" value={{ order_by }} />
+      <input type="hidden" name="order_dir" value={{ order_dir }} />
+      <input type="hidden" name="page" value={{ page }} />
+      <input type="hidden" name="per_page" value={{ per_page }} />
+
+      <table>
+        <tr>
+          <th>Lokalita</th>
+          <th>Vlastník</th>
+          <th>Typ</th>
+          <th>Rozloha</th>
+          <th></th>
+        </tr>
+
+        <tr>
+          <td>
+            <input name="locality" type="text" placeholder="Jméno nebo číslo katastru" {% if filters.locality %}value={{ filters.locality }}{% endif %}>
+          </td>
+
+          <td>
+            <input name="owner" type="text" placeholder="Jméno vlastníka" {% if filters.owner %}value={{ filters.owner }}{% endif %}>
+          </td>
+
+          <td>
+            <select name="type">
+              <option value="all" {% if filters.type=="all" %}selected=""{% endif %}>Všechny typy pozemků</option>
+              {% for t in types %}
+                <option value="{{ t }}" {% if filters.type==t %}selected=""{% endif %}>{{ t }}</option>
+              {% endfor %}
+            </select>
+          </td>
+
+          <td>
+            <select name="expanse">
+                <option value="all" {% if filters.expanse=="all" %}selected=""{% endif %}>Bez omezení velikosti</option>
+                <option value="0" {% if filters.expanse=="0" %}selected=""{% endif %}>do 50</option>
+                <option value="50" {% if filters.expanse=="50" %}selected=""{% endif %}>50..200</option>
+                <option value="200" {% if filters.expanse=="200" %}selected=""{% endif %}>200..500</option>
+                <option value="500" {% if filters.expanse=="500" %}selected=""{% endif %}>500..1000</option>
+                <option value="1000" {% if filters.expanse=="1000" %}selected=""{% endif %}>1000 a víc</option>
+            </select>
+          </td>
+
+          <td>
+            <input name="filtered" value="Vybrat" type="submit">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="pagination">
+    {{ pm.render(pagination, "estates", order_by=order_by, order_dir=order_dir, locality=filters.locality, type=filters.type, expanse=filters.expanse, per_page=per_page, lv_number=filters.lv_number, owner=filters.owner) }}
+  </div>
+
+  <div class="data_table">
+    <table>
+      <tr>
+        <th>Identifikační číslo</th>
+
+        <th>
+          <a title="řadit podle identifikačního čísla vzestupně" href={{ url_for("estates", order_by="parcel_number", order_dir="asc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle identifikačního čísla sestupně" href={{ url_for("estates", order_by="parcel_number", order_dir="desc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Lokalita</th>
+
+        <th>
+          <a title="řadit podle lokality vzestupně" href={{ url_for("estates", order_by="locality", order_dir="asc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle lokality sestupně" href={{ url_for("estates", order_by="locality", order_dir="desc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Číslo LV</th>
+
+        <th>
+          <a title="řadit podle čísla lv vzestupně" href={{ url_for("estates", order_by="lv_number", order_dir="asc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle čísla lv sestupně" href={{ url_for("estates", order_by="lv_number", order_dir="desc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Typ</th>
+
+        <th>
+          <a title="řadit podle typu pozemku vzestupně" href={{ url_for("estates", order_by="type", order_dir="asc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle typu pozemku sestupně" href={{ url_for("estates", order_by="type", order_dir="desc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Rozloha</th>
+
+        <th>
+          <a title="řadit podle rozlohy vzestupně" href={{ url_for("estates", order_by="expanse", order_dir="asc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle rozlohy sestupně" href={{ url_for("estates", order_by="expanse", order_dir="desc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Cena</th>
+
+        <th>
+          <a title="řadit podle ceny vzestupně" href={{ url_for("estates", order_by="price", order_dir="asc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/up.png") }} alt="řadit vzestupně">
+          </a>
+        </th>
+
+        <th>
+          <a title="řadit podle ceny sestupně" href={{ url_for("estates", order_by="price", order_dir="desc", locality=filters.locality, type=filters.type, expanse=filters.expanse, page=page, per_page=per_page) }}>
+            <img src={{ url_for("static", filename="img/down.png") }} alt="řadit sestupně">
+          </a>
+        </th>
+
+        <th>Omezení</th>
+  {% if filters.owner %}<th>Podíl</th>{% endif %}
+      </tr>
+
+      {% for est in data %}
+        <tr>
+          <td colspan="3">{{ est.parcel_number }}</td>
+          <td colspan="3">{{ est.locality }}</td>
+          <td colspan="3">{{ est.lv_number }}</td>
+          <td colspan="3">{{ est.type }}</td>
+          <td colspan="3">{{ est.expanse }}</td>
+          <td colspan="3">{{ est.price }}</td>
+          <td>
+            {% if est.restrictions %}
+              <select>
+                <option selected="">{{ est.restrictions|length }}</option>
+                {% for restr in est.restrictions %}
+                  <option>{{ restr }}</option>
+                {% endfor %}
+              </select>
+            {% endif %}
+          </td>
+
+          {% if filters.owner %}<td colspan="3">{{est.share}}</td>{% endif %}
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+
+  <div class="pagination">
+    {{ pm.render(pagination, "estates", order_by=order_by, order_dir=order_dir, locality=filters.locality, type=filters.type, expanse=filters.expanse, per_page=per_page, lv_number=filters.lv_number, owner=filters.owner) }}
+  </div>
+{% endblock %}

@@ -1,0 +1,231 @@
+
+body {
+    /*background-color: #d1e4ff;*/
+    background-color: #BBB;
+}
+
+.header {
+    padding: 10px;
+}
+
+.filter {
+    padding: 5px;
+    float:top;
+}
+
+.pagination {
+    padding: 5px;
+    float:top;
+    margin-top:0;
+    margin-bottom:0;
+    margin-left:2px;
+}
+
+.data_table {
+    padding: 1px;
+    width: 100%;
+}
+
+.data_table tr:nth-child(even){
+    background-color: #CCC;
+}
+
+.data_table th{
+    background-color: #AAA;
+    padding: 5px 1px 1px 5px;
+}
+
+.data_table td{
+    padding: 2px 10px 2px 10px;
+}
+
+.data_table a:link{
+    color: inherit;
+}
+
+.data_table a:visited{
+    color: inherit;
+}
+
+.data_table select{
+    width: 50px;
+}
+
+.data_table img{
+    width: 20px;
+    height: 20px;
+}
+
+.data_table input{
+    width: 20px;
+    height: 20px;
+}
+
+
+.download_bar{
+    padding: 10px;
+    width: 75%;
+}
+
+.download_bar tr:nth-child(even){
+    background-color: #CCC;
+}
+
+.download_bar th{
+    background-color: #AAA;
+    padding: 10px;
+}
+
+.download_bar td{
+    padding: 5px;
+}
+
+
+.download_queue{
+    padding: 10px;
+    width: 75%;
+}
+
+.download_queue tr:nth-child(even){
+    background-color: #CCC;
+}
+
+.download_queue th{
+    background-color: #AAA;
+    padding: 5px 1px 1px 5px;
+}
+
+.download_queue td{
+    padding: 0px 10px 0px 10px;
+}
+
+
+.user_detail a:link{
+    color: inherit;
+}
+
+.user_detail a:visited{
+    color: inherit;
+}
+
+.user_detail {
+    padding: 10px;
+}
+
+.user_detail tr{
+    background-color: #CCC;
+}
+
+.user_detail th{
+    background-color: #AAA;
+    padding: 5px 10px 5px 10px;
+}
+
+.user_detail td{
+    padding: 0px 5px 0px 10px;
+}
+
+.user_detail a:link{
+    color: inherit;
+}
+
+.user_detail img{
+    width: 40px;
+    height: 40px;
+}
+
+.user_detail input{
+    width: 25px;
+    height: 25px;
+}
+
+
+.user_note td{
+    padding: 0px 0px 5px 10px
+    ;
+}
+
+
+.tag {
+    float: left;
+    width: 12px;
+    height: 14px;
+    margin: 3px;
+    border: 1px solid;
+    display:inline-block;
+
+}
+
+.tag_edit img{
+    float: left;
+    width: 14px;
+    height: 16px;
+    margin: 1px;
+    display:inline-block;
+
+}
+
+.block_container {
+    position: relative;
+}
+
+.tag_up {
+    float: left;
+    top: 60%;
+    transform: translateY(-40%);
+    justify-content: center;
+    width: 12px;
+    height: 14px;
+    margin: 3px;
+}
+
+.tag_down {
+    float: left;
+    top: 80%;
+    transform: translateY(-20%);
+    display:inline-block;
+    justify-content: center;
+    width: 12px;
+    height: 14px;
+    margin: 3px;
+}
+
+.tag_negotiation{
+    background: #F7A51E;
+}
+
+.tag_success{
+    background: #198204;
+}
+
+.tag_failure{
+    background: #F56368;
+}
+
+.tag_execution{
+    background: #666666;
+}
+
+.tag_call{
+    background: #E8E621;
+}
+
+.tag_change{
+    background: #EE361C;
+}
+
+.tag_find_owners{
+    background: #4CCAFE;
+}
+
+.tag_call_later{
+    background: #99CCDC;
+}
+
+.tag_call_not{
+    background: #FC00FF;
+}
+
+.tag_oslovit{
+    background: #ffffff;
+}
