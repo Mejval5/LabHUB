@@ -4,17 +4,17 @@
 miniconda -> https://docs.conda.io/en/latest/miniconda.html (python 3.7)
 
 **Start miniconda terminal and create virtual enviroment in which packages will live and copulate together:**  
-conda create -n scihub
+conda create -n labhub
 
 **Activate the enviroment(you can also just start SetUpEnv.CMD):**  
-conda activate scihub
+conda activate labhub
 
 **To see what packages you have installed and where do:**  
 conda list
 
 **!!! download packagesLatest.rar and copy everything from packagesLatest/scihub to your enviroment location from last command !!!**  
 **Link:** https://drive.google.com/file/d/1JLOgLo7qv_KUIX51ps036PioIHQVzIE6/view?usp=sharing  
-Probably you should copy it to (\AppData\Local\conda\conda\envs\scihub)
+Probably you should copy it to (\AppData\Local\conda\conda\envs\labhub)
 
 ### Get this project:  
 **Go to location of your project, can be anywhere, (cd ...) go to it and do this commands**  
