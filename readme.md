@@ -40,6 +40,10 @@ pg_ctl -D database -l logs/dbLog.log start
 **When prompted by the next command write this password: Nejlepsi69Science**  
 createuser -s -P labhub
 
+psql sciencedata
+create extension pgcrypto;
+\q
+
 psql -d sciencedata -a -f sql/init.sql
 
 **Now you can start the server by command:**  
