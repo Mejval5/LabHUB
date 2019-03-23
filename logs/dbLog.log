@@ -400,3 +400,96 @@
 2019-03-23 21:11:15.840 CET [19940] LOG:  background worker "logical replication launcher" (PID 6852) exited with exit code 1
 2019-03-23 21:11:15.929 CET [16028] LOG:  shutting down
 2019-03-23 21:11:16.028 CET [19940] LOG:  database system is shut down
+2019-03-23 21:14:28.659 CET [21356] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 21:14:28.659 CET [21356] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 21:14:28.773 CET [20492] LOG:  database system was shut down at 2019-03-23 21:11:15 CET
+2019-03-23 21:14:28.818 CET [21356] LOG:  database system is ready to accept connections
+2019-03-23 21:14:57.494 CET [5380] ERROR:  relation "users" does not exist at character 116
+2019-03-23 21:14:57.494 CET [5380] STATEMENT:  
+	            SELECT
+	                u.pswd_hash = crypt('shit150', u.salt) AS hit
+	            FROM
+	                users u
+	            WHERE
+	                login = 'Ondrej'
+	        
+2019-03-23 21:15:27.507 CET [12452] ERROR:  canceling statement due to user request
+2019-03-23 21:15:27.508 CET [21356] LOG:  received fast shutdown request
+2019-03-23 21:15:27.546 CET [21356] LOG:  aborting any active transactions
+2019-03-23 21:15:27.550 CET [5380] FATAL:  terminating connection due to administrator command
+2019-03-23 21:15:27.552 CET [12872] FATAL:  terminating connection due to administrator command
+2019-03-23 21:15:27.552 CET [21356] LOG:  background worker "logical replication launcher" (PID 12452) exited with exit code 1
+2019-03-23 21:15:27.599 CET [10884] LOG:  shutting down
+2019-03-23 21:15:27.698 CET [21356] LOG:  database system is shut down
+2019-03-23 21:15:34.724 CET [19596] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 21:15:34.724 CET [19596] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 21:15:34.844 CET [15944] LOG:  database system was shut down at 2019-03-23 21:15:27 CET
+2019-03-23 21:15:34.901 CET [19596] LOG:  database system is ready to accept connections
+2019-03-23 21:15:49.314 CET [7448] ERROR:  function gen_salt(unknown) does not exist at character 28
+2019-03-23 21:15:49.314 CET [7448] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-03-23 21:15:49.314 CET [7448] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Raccoon5',
+	    'Dan',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('stormfox150', salt) FROM salt)
+	);
+2019-03-23 21:15:49.443 CET [7448] ERROR:  function gen_salt(unknown) does not exist at character 28
+2019-03-23 21:15:49.443 CET [7448] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-03-23 21:15:49.443 CET [7448] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Ondra',
+	    'Ondra',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	);
+2019-03-23 21:15:49.569 CET [7448] ERROR:  function gen_salt(unknown) does not exist at character 28
+2019-03-23 21:15:49.569 CET [7448] HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+2019-03-23 21:15:49.569 CET [7448] STATEMENT:  WITH salt AS (
+	    SELECT gen_salt('bf') AS salt
+	)
+	INSERT INTO users
+	    (login, name, salt, pswd_hash)
+	VALUES (
+	    'Andrej',
+	    'Andrej',
+	    (SELECT salt FROM salt),
+	    (SELECT crypt('', salt) FROM salt)
+	);
+2019-03-23 21:16:20.754 CET [22560] FATAL:  database "scihub" does not exist
+2019-03-23 21:19:23.985 CET [9248] ERROR:  canceling statement due to user request
+2019-03-23 21:19:23.985 CET [19596] LOG:  received fast shutdown request
+2019-03-23 21:19:24.030 CET [19596] LOG:  aborting any active transactions
+2019-03-23 21:19:24.033 CET [3396] FATAL:  terminating connection due to administrator command
+2019-03-23 21:19:24.038 CET [21576] FATAL:  terminating connection due to administrator command
+2019-03-23 21:19:24.041 CET [19596] LOG:  background worker "logical replication launcher" (PID 9248) exited with exit code 1
+2019-03-23 21:19:24.823 CET [7468] LOG:  shutting down
+2019-03-23 21:19:24.902 CET [19596] LOG:  database system is shut down
+2019-03-23 21:19:51.289 CET [20532] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 21:19:51.289 CET [20532] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 21:19:51.397 CET [23056] LOG:  database system was shut down at 2019-03-23 21:19:24 CET
+2019-03-23 21:19:51.463 CET [20532] LOG:  database system is ready to accept connections
+2019-03-23 21:27:43.636 CET [20532] LOG:  received fast shutdown request
+2019-03-23 21:27:43.659 CET [20532] LOG:  aborting any active transactions
+2019-03-23 21:27:43.659 CET [22636] ERROR:  canceling statement due to user request
+2019-03-23 21:27:43.665 CET [17328] FATAL:  terminating connection due to administrator command
+2019-03-23 21:27:43.670 CET [1372] FATAL:  terminating connection due to administrator command
+2019-03-23 21:27:43.688 CET [20532] LOG:  background worker "logical replication launcher" (PID 22636) exited with exit code 1
+2019-03-23 21:27:43.701 CET [22700] LOG:  shutting down
+2019-03-23 21:27:43.806 CET [20532] LOG:  database system is shut down
+2019-03-23 21:27:58.290 CET [22008] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-23 21:27:58.290 CET [22008] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-23 21:27:58.413 CET [17844] LOG:  database system was shut down at 2019-03-23 21:27:43 CET
+2019-03-23 21:27:58.457 CET [22008] LOG:  database system is ready to accept connections
+2019-03-23 21:28:00.428 CET [17992] FATAL:  database "database" does not exist
+2019-03-23 21:31:24.263 CET [10540] FATAL:  role "scihub" does not exist
+2019-03-23 21:31:38.177 CET [11876] FATAL:  role "scihub" does not exist
+2019-03-23 21:32:00.137 CET [20236] FATAL:  role "scihub" does not exist

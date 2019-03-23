@@ -234,3 +234,115 @@ INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:10:50] "GET /?__debugger__=yes&cmd=r
 INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:10:50] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:10:52] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:10:52] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 238-975-737
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:39] "GET / HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:39] "GET /login/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:39] "GET /static/css/petrov.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:42] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:57] "POST /login/ HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:57] "GET /login/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:57] "GET /login/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:58] "GET /login/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:14:59] "GET /login/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:15:00] "GET /login/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:15:00] "GET /login/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 238-975-737
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:16:48] "POST /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:16:48] "GET /login/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:16:48] "GET /static/css/petrov.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:17:00] "POST /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:17:00] "GET /login/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:17:00] "GET /static/css/petrov.css HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 238-975-737
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:17] "POST /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:17] "GET /login/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:17] "GET /static/css/petrov.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:23] "POST /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:23] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:23] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:24] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:24] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:24] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:24] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:24] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:25] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:25] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:25] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:25] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:25] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:25] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:26] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:26] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:26] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:26] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:26] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:26] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:32] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:32] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:32] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:32] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:32] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:33] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:33] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:33] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:33] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:33] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:33] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:34] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:34] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:34] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:34] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:34] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:34] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:35] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:35] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:35] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:44] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:44] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:44] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:45] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:45] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:45] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:45] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:45] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:45] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:46] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:46] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:46] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:46] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:46] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:46] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:47] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:47] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:47] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:47] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:47] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:47] "GET / HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:48] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:48] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:48] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:48] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:49] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:49] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:49] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:49] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:49] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:49] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:50] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:50] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:50] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:50] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:50] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:50] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:50] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:51] "GET /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Mar/2019 21:20:51] "GET /login/ HTTP/1.1" 302 -

@@ -38,10 +38,10 @@ WITH salt AS (
 INSERT INTO users
     (login, name, salt, pswd_hash)
 VALUES (
-    'Ondra',
-    'Ondra',
+    'Ondrej',
+    'Ondrej',
     (SELECT salt FROM salt),
-    (SELECT crypt('', salt) FROM salt)
+    (SELECT crypt('shit150', salt) FROM salt)
 );
 
 -- create account 3
