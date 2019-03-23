@@ -33,8 +33,12 @@ set FLASK_ENV=development
 (SELECT crypt('PutYourPasswordHere', salt) FROM salt)
 
 **Then run these commands**
-pginit
-pg_ctl -D database -l logs/dbLog.log start  
+createdb -h localhost -p 5432 sciencedata
+pg_ctl -D database -l logs/dbLog.log start
+
+**When prompted by the next command write this password: Nejlepsi69Science**
+createuser -s -P labhub
+
 psql -d sciencedata -a -f sql/init.sql
 
 **Now you can start the server by command:**  
