@@ -32,7 +32,7 @@ set FLASK_ENV=development
 **Go to sql/init.sql and add your password to the file at this line:**  
 (SELECT crypt('PutYourPasswordHere', salt) FROM salt)
 
-**Then run these commands**
+**Then run these commands**  
 initdb database  
 createdb -h localhost -p 5432 sciencedata  
 pg_ctl -D database -l logs/dbLog.log start  
