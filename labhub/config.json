@@ -1,7 +1,7 @@
 {
     "database": {
         "host": "localhost",
-        "user": "scihub",
+        "user": "labhub",
         "passwd": "Nejlepsi69Science",
         "db": "sciencedata"
     }

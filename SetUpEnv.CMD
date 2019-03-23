@@ -1,1 +1,1 @@
-cmd /k conda activate scihub
+cmd /k conda activate labhub

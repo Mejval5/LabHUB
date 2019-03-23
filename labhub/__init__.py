@@ -33,7 +33,7 @@ nav.init_app(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
 
-with open("scihub/config.json") as conf_data:
+with open("labhub/config.json") as conf_data:
     app.config.update(loads(conf_data.read()))
 
 db = Database(**app.config["database"])
