@@ -4724,3 +4724,417 @@
 2019-03-24 00:42:52.571 CET [18196] LOG:  background worker "logical replication launcher" (PID 25112) exited with exit code 1
 2019-03-24 00:42:52.592 CET [26840] LOG:  shutting down
 2019-03-24 00:42:52.765 CET [18196] LOG:  database system is shut down
+2019-03-27 21:28:21.884 CET [22044] LOG:  listening on IPv6 address "::1", port 5432
+2019-03-27 21:28:21.885 CET [22044] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-03-27 21:28:22.026 CET [16844] LOG:  database system was shut down at 2019-03-24 00:42:52 CET
+2019-03-27 21:28:22.103 CET [22044] LOG:  database system is ready to accept connections
+2019-03-27 21:53:40.581 CET [22644] ERROR:  operator does not exist: - oid at character 2249
+2019-03-27 21:53:40.581 CET [22644] HINT:  No operator matches the given name and argument type. You might need to add an explicit type cast.
+2019-03-27 21:53:40.581 CET [22644] STATEMENT:  SELECT DISTINCT dep.deptype, dep.refclassid, cl.relkind, ad.adbin, ad.adsrc,
+	    CASE WHEN cl.relkind IS NOT NULL THEN cl.relkind || COALESCE(dep.refobjsubid::character varying, '')
+	        WHEN tg.oid IS NOT NULL THEN 'T'::text
+	        WHEN ty.oid IS NOT NULL AND ty.typbasetype = 0 THEN 'y'::text
+	        WHEN ty.oid IS NOT NULL AND ty.typbasetype != 0 THEN 'd'::text
+	        WHEN ns.oid IS NOT NULL THEN 'n'::text
+	        WHEN pr.oid IS NOT NULL THEN 'p'::text
+	        WHEN la.oid IS NOT NULL THEN 'l'::text
+	        WHEN rw.oid IS NOT NULL THEN 'R'::text
+	        WHEN co.oid IS NOT NULL THEN 'C'::text || contype
+	        WHEN ad.oid IS NOT NULL THEN 'A'::text
+	        WHEN fs.oid IS NOT NULL THEN 'F'::text
+	        WHEN fdw.oid IS NOT NULL THEN 'f'::text
+	    ELSE ''
+	    END AS type,
+	    COALESCE(coc.relname, clrw.relname) AS ownertable,
+	    CASE WHEN cl.relname IS NOT NULL OR att.attname IS NOT NULL THEN cl.relname || '.' || att.attname
+	    ELSE COALESCE(cl.relname, co.conname, pr.proname, tg.tgname, ty.typname, la.lanname, rw.rulename, ns.nspname, fs.srvname, fdw.fdwname)
+	    END AS refname,
+	    COALESCE(nsc.nspname, nso.nspname, nsp.nspname, nst.nspname, nsrw.nspname) AS nspname
+	FROM pg_depend dep
+	LEFT JOIN pg_class cl ON dep.refobjid=cl.oid
+	LEFT JOIN pg_attribute att ON dep.refobjid=att.attrelid AND dep.refobjsubid=att.attnum
+	LEFT JOIN pg_namespace nsc ON cl.relnamespace=nsc.oid
+	LEFT JOIN pg_proc pr ON dep.refobjid=pr.oid
+	LEFT JOIN pg_namespace nsp ON pr.pronamespace=nsp.oid
+	LEFT JOIN pg_trigger tg ON dep.refobjid=tg.oid
+	LEFT JOIN pg_type ty ON dep.refobjid=ty.oid
+	LEFT JOIN pg_namespace nst ON ty.typnamespace=nst.oid
+	LEFT JOIN pg_constraint co ON dep.refobjid=co.oid
+	LEFT JOIN pg_class coc ON co.conrelid=coc.oid
+	LEFT JOIN pg_namespace nso ON co.connamespace=nso.oid
+	LEFT JOIN pg_rewrite rw ON dep.refobjid=rw.oid
+	LEFT JOIN pg_class clrw ON clrw.oid=rw.ev_class
+	LEFT JOIN pg_namespace nsrw ON clrw.relnamespace=nsrw.oid
+	LEFT JOIN pg_language la ON dep.refobjid=la.oid
+	LEFT JOIN pg_namespace ns ON dep.refobjid=ns.oid
+	LEFT JOIN pg_attrdef ad ON ad.adrelid=att.attrelid AND ad.adnum=att.attnum
+	LEFT JOIN pg_foreign_server fs ON fs.oid=dep.refobjid
+	LEFT JOIN pg_foreign_data_wrapper fdw ON fdw.oid=dep.refobjid
+	WHERE dep.objid=-6::oid AND
+	refclassid IN ( SELECT oid FROM pg_class WHERE relname IN
+	   ('pg_class', 'pg_constraint', 'pg_conversion', 'pg_language', 'pg_proc', 'pg_rewrite', 'pg_namespace',
+	   'pg_trigger', 'pg_type', 'pg_attrdef', 'pg_event_trigger', 'pg_foreign_server', 'pg_foreign_data_wrapper'))
+	ORDER BY refclassid, cl.relkind
+2019-03-27 23:06:19.276 CET [24424] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-27 23:06:19.276 CET [24424] LOG:  unexpected EOF on client connection with an open transaction
+2019-03-27 23:08:44.491 CET [3964] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-27 23:08:44.491 CET [3964] LOG:  unexpected EOF on client connection with an open transaction
+2019-03-27 23:09:15.210 CET [28724] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-27 23:09:15.210 CET [28724] LOG:  unexpected EOF on client connection with an open transaction
+2019-03-27 23:10:13.276 CET [22500] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-27 23:10:13.276 CET [22500] LOG:  unexpected EOF on client connection with an open transaction
+2019-03-27 23:10:36.721 CET [6524] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-27 23:10:53.972 CET [21796] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-27 23:31:32.869 CET [22644] ERROR:  constraint "picture_pkey" of relation "log_picture" does not exist
+2019-03-27 23:31:32.869 CET [22644] STATEMENT:  ALTER TABLE public.log_picture DROP COLUMN picture_id;
+	ALTER TABLE public.log_picture DROP CONSTRAINT picture_pkey;
+	
+	ALTER TABLE public.log_picture
+	    ADD CONSTRAINT "log_id_path_PrimaryKey" PRIMARY KEY (picture_log_id, picture_path)
+	;
+2019-03-27 23:31:51.008 CET [22644] ERROR:  constraint "picture_pkey" of relation "log_picture" does not exist
+2019-03-27 23:31:51.008 CET [22644] STATEMENT:  ALTER TABLE public.log_picture DROP COLUMN picture_id;
+	ALTER TABLE public.log_picture DROP CONSTRAINT picture_pkey;
+	
+	ALTER TABLE public.log_picture
+	    ADD CONSTRAINT "log_id_path_PrimaryKey" PRIMARY KEY (picture_log_id, picture_path)
+	;
+2019-03-27 23:32:23.199 CET [22644] ERROR:  constraint "picture_pkey" of relation "log_picture" does not exist
+2019-03-27 23:32:23.199 CET [22644] STATEMENT:  ALTER TABLE public.log_picture DROP COLUMN picture_id;
+	ALTER TABLE public.log_picture DROP CONSTRAINT picture_pkey;
+	
+	ALTER TABLE public.log_picture
+	    ADD CONSTRAINT "log_id_path_PrimaryKey" PRIMARY KEY (picture_log_id, picture_path)
+	;
+2019-03-27 23:59:06.774 CET [29028] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-27 23:59:06.774 CET [29028] LOG:  unexpected EOF on client connection with an open transaction
+2019-03-27 23:59:55.833 CET [30836] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-03-28 08:17:28.683 CET [22044] LOG:  server process (PID 26864) was terminated by exception 0xC000013A
+2019-03-28 08:17:28.683 CET [22044] DETAIL:  Failed process was running: /*pga4dash*/
+	SELECT 'session_stats' AS chart_name, row_to_json(t) AS chart_data
+	FROM (SELECT
+	   (SELECT count(*) FROM pg_stat_activity WHERE datname = (SELECT datname FROM pg_database WHERE oid = 1)) AS "Total",
+	   (SELECT count(*) FROM pg_stat_activity WHERE state = 'active' AND datname = (SELECT datname FROM pg_database WHERE oid = 1))  AS "Active",
+	   (SELECT count(*) FROM pg_stat_activity WHERE state = 'idle' AND datname = (SELECT datname FROM pg_database WHERE oid = 1))  AS "Idle"
+	) t
+	UNION ALL
+	SELECT 'tps_stats' AS chart_name, row_to_json(t) AS chart_data
+	FROM (SELECT
+	   (SELECT sum(xact_commit) + sum(xact_rollback) FROM pg_stat_database WHERE datname = (SELECT datname FROM pg_database WHERE oid = 1)) AS "Transactions",
+	   (SELECT sum(xact_commit) FROM pg_stat_database WHERE datname = (SELECT datname FROM pg_database WHERE oid = 1)) AS "Commits",
+	   (SELECT sum(xact_rollback) FROM pg_stat_database WHERE datname = (SELECT datname FROM pg_database WHERE oid = 1)) AS "Rollbacks"
+	) t
+	UNION ALL
+	SELECT 'ti_s
+2019-03-28 08:17:28.683 CET [22044] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2019-03-28 08:17:28.684 CET [22044] LOG:  terminating any other active server processes
+2019-03-28 08:17:28.704 CET [13852] WARNING:  terminating connection because of crash of another server process
+2019-03-28 08:17:28.704 CET [13852] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-03-28 08:17:28.704 CET [13852] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-03-28 08:17:28.708 CET [19712] WARNING:  terminating connection because of crash of another server process
+2019-03-28 08:17:28.708 CET [19712] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-03-28 08:17:28.708 CET [19712] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-03-28 08:17:28.725 CET [16928] WARNING:  terminating connection because of crash of another server process
+2019-03-28 08:17:28.725 CET [16928] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-03-28 08:17:28.725 CET [16928] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-03-28 08:17:28.778 CET [22044] LOG:  all server processes terminated; reinitializing
+2019-03-28 08:17:28.858 CET [33968] LOG:  database system was interrupted; last known up at 2019-03-27 23:53:22 CET
+2019-03-28 08:17:31.891 CET [22044] LOG:  startup process (PID 33968) was terminated by exception 0xC000013A
+2019-03-28 08:17:31.891 CET [22044] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2019-03-28 08:17:31.891 CET [22044] LOG:  aborting startup due to startup process failure
+2019-03-28 08:17:31.896 CET [22044] LOG:  database system is shut down
+2019-04-04 22:10:19.167 CEST [21952] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-04 22:10:19.167 CEST [21952] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-04 22:10:19.352 CEST [1364] LOG:  database system was interrupted; last known up at 2019-03-27 23:53:22 CET
+2019-04-04 22:10:27.396 CEST [1364] LOG:  database system was not properly shut down; automatic recovery in progress
+2019-04-04 22:10:27.415 CEST [1364] LOG:  redo starts at 0/17D0800
+2019-04-04 22:10:27.415 CEST [1364] LOG:  invalid record length at 0/17D08E0: wanted 24, got 0
+2019-04-04 22:10:27.415 CEST [1364] LOG:  redo done at 0/17D08A8
+2019-04-04 22:10:29.161 CEST [21952] LOG:  database system is ready to accept connections
+2019-04-04 22:24:29.141 CEST [6664] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 22:24:59.565 CEST [17604] ERROR:  column "pswd_hash" does not exist at character 37
+2019-04-04 22:24:59.565 CEST [17604] STATEMENT:  
+	            SELECT
+	                pswd_hash = crypt('shit150', salt) AS hit
+	            FROM
+	                user
+	            WHERE
+	                login = 'Ondrej'
+	        
+2019-04-04 22:36:17.063 CEST [17604] ERROR:  current transaction is aborted, commands ignored until end of transaction block
+2019-04-04 22:36:17.063 CEST [17604] STATEMENT:  
+	            SELECT
+	                pswd_hash = crypt('shit150', salt) AS hit
+	            FROM
+	                user
+	            WHERE
+	                login = 'Ondrej'
+	        
+2019-04-04 22:36:29.827 CEST [17604] ERROR:  current transaction is aborted, commands ignored until end of transaction block
+2019-04-04 22:36:29.827 CEST [17604] STATEMENT:  
+	            SELECT
+	                pswd_hash = crypt('shit150', salt) AS hit
+	            FROM
+	                user
+	            WHERE
+	                login = 'Ondrej'
+	        
+2019-04-04 22:39:53.600 CEST [21952] LOG:  received fast shutdown request
+2019-04-04 22:39:53.612 CEST [12748] ERROR:  canceling statement due to user request
+2019-04-04 22:39:53.619 CEST [21952] LOG:  aborting any active transactions
+2019-04-04 22:39:53.621 CEST [3092] FATAL:  terminating connection due to administrator command
+2019-04-04 22:39:53.621 CEST [17604] FATAL:  terminating connection due to administrator command
+2019-04-04 22:39:53.623 CEST [22892] FATAL:  terminating connection due to administrator command
+2019-04-04 22:39:53.624 CEST [22812] FATAL:  terminating connection due to administrator command
+2019-04-04 22:39:53.626 CEST [22964] FATAL:  terminating connection due to administrator command
+2019-04-04 22:39:53.627 CEST [208] FATAL:  terminating connection due to administrator command
+2019-04-04 22:39:53.639 CEST [21952] LOG:  background worker "logical replication launcher" (PID 12748) exited with exit code 1
+2019-04-04 22:39:53.661 CEST [20012] LOG:  shutting down
+2019-04-04 22:39:53.776 CEST [21952] LOG:  database system is shut down
+2019-04-04 22:40:28.494 CEST [22432] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-04 22:40:28.495 CEST [22432] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-04 22:40:28.652 CEST [13404] LOG:  database system was shut down at 2019-04-04 22:39:53 CEST
+2019-04-04 22:40:28.735 CEST [22432] LOG:  database system is ready to accept connections
+2019-04-04 22:40:35.966 CEST [10936] FATAL:  database "ScienceData" does not exist
+2019-04-04 22:41:02.233 CEST [24156] FATAL:  database "ondre" does not exist
+2019-04-04 22:41:10.165 CEST [12516] FATAL:  database "Sciencedata" does not exist
+2019-04-04 22:43:03.219 CEST [18224] ERROR:  column "pswd_hash" does not exist at character 37
+2019-04-04 22:43:03.219 CEST [18224] STATEMENT:  
+	            SELECT
+	                pswd_hash = crypt('stormfox150', salt) AS hit
+	            FROM
+	                user
+	            WHERE
+	                login = 'Raccoon5'
+	        
+2019-04-04 22:45:40.973 CEST [22152] ERROR:  canceling statement due to user request
+2019-04-04 22:45:40.974 CEST [22432] LOG:  received fast shutdown request
+2019-04-04 22:45:40.998 CEST [22432] LOG:  aborting any active transactions
+2019-04-04 22:45:41.000 CEST [18224] FATAL:  terminating connection due to administrator command
+2019-04-04 22:45:41.001 CEST [1536] FATAL:  terminating connection due to administrator command
+2019-04-04 22:45:41.003 CEST [22432] LOG:  background worker "logical replication launcher" (PID 22152) exited with exit code 1
+2019-04-04 22:45:41.021 CEST [24104] LOG:  shutting down
+2019-04-04 22:45:41.167 CEST [22432] LOG:  database system is shut down
+2019-04-04 22:45:51.794 CEST [23564] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-04 22:45:51.794 CEST [23564] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-04 22:45:51.925 CEST [19244] LOG:  database system was shut down at 2019-04-04 22:45:41 CEST
+2019-04-04 22:45:52.020 CEST [23564] LOG:  database system is ready to accept connections
+2019-04-04 22:49:21.383 CEST [21652] ERROR:  column "pswd_hash" does not exist at character 37
+2019-04-04 22:49:21.383 CEST [21652] STATEMENT:  
+	            SELECT
+	                pswd_hash = crypt('stormfox150', salt) AS hit
+	            FROM
+	                user
+	            WHERE
+	                login = 'Raccoon5'
+	        
+2019-04-04 22:53:38.500 CEST [22024] ERROR:  canceling statement due to user request
+2019-04-04 22:53:38.500 CEST [23564] LOG:  received fast shutdown request
+2019-04-04 22:53:38.511 CEST [23564] LOG:  aborting any active transactions
+2019-04-04 22:53:38.513 CEST [21652] FATAL:  terminating connection due to administrator command
+2019-04-04 22:53:38.515 CEST [3400] FATAL:  terminating connection due to administrator command
+2019-04-04 22:53:38.523 CEST [23316] FATAL:  terminating connection due to administrator command
+2019-04-04 22:53:38.539 CEST [24052] FATAL:  terminating connection due to administrator command
+2019-04-04 22:53:38.546 CEST [23564] LOG:  background worker "logical replication launcher" (PID 22024) exited with exit code 1
+2019-04-04 22:53:38.565 CEST [23200] LOG:  shutting down
+2019-04-04 22:53:38.695 CEST [23564] LOG:  database system is shut down
+2019-04-04 22:53:46.820 CEST [9732] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-04 22:53:46.821 CEST [9732] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-04 22:53:46.915 CEST [24052] LOG:  database system was shut down at 2019-04-04 22:53:38 CEST
+2019-04-04 22:53:46.995 CEST [9732] LOG:  database system is ready to accept connections
+2019-04-04 22:54:13.667 CEST [19560] ERROR:  relation "users" does not exist at character 15
+2019-04-04 22:54:13.667 CEST [19560] STATEMENT:  select * from users;
+2019-04-04 22:54:31.033 CEST [19560] ERROR:  syntax error at or near "hmmm" at character 1
+2019-04-04 22:54:31.033 CEST [19560] STATEMENT:  hmmm to je nejaky problematicky tam fakt nic neni
+	;
+2019-04-04 22:56:06.488 CEST [19560] ERROR:  syntax error at or near "wtf" at character 1
+2019-04-04 22:56:06.488 CEST [19560] STATEMENT:  wtf.... je možné že je to prázdné? že se to smazalo pri zmene jména???;
+2019-04-04 22:56:21.157 CEST [13908] ERROR:  operator does not exist: - oid at character 2249
+2019-04-04 22:56:21.157 CEST [13908] HINT:  No operator matches the given name and argument type. You might need to add an explicit type cast.
+2019-04-04 22:56:21.157 CEST [13908] STATEMENT:  SELECT DISTINCT dep.deptype, dep.refclassid, cl.relkind, ad.adbin, ad.adsrc,
+	    CASE WHEN cl.relkind IS NOT NULL THEN cl.relkind || COALESCE(dep.refobjsubid::character varying, '')
+	        WHEN tg.oid IS NOT NULL THEN 'T'::text
+	        WHEN ty.oid IS NOT NULL AND ty.typbasetype = 0 THEN 'y'::text
+	        WHEN ty.oid IS NOT NULL AND ty.typbasetype != 0 THEN 'd'::text
+	        WHEN ns.oid IS NOT NULL THEN 'n'::text
+	        WHEN pr.oid IS NOT NULL THEN 'p'::text
+	        WHEN la.oid IS NOT NULL THEN 'l'::text
+	        WHEN rw.oid IS NOT NULL THEN 'R'::text
+	        WHEN co.oid IS NOT NULL THEN 'C'::text || contype
+	        WHEN ad.oid IS NOT NULL THEN 'A'::text
+	        WHEN fs.oid IS NOT NULL THEN 'F'::text
+	        WHEN fdw.oid IS NOT NULL THEN 'f'::text
+	    ELSE ''
+	    END AS type,
+	    COALESCE(coc.relname, clrw.relname) AS ownertable,
+	    CASE WHEN cl.relname IS NOT NULL OR att.attname IS NOT NULL THEN cl.relname || '.' || att.attname
+	    ELSE COALESCE(cl.relname, co.conname, pr.proname, tg.tgname, ty.typname, la.lanname, rw.rulename, ns.nspname, fs.srvname, fdw.fdwname)
+	    END AS refname,
+	    COALESCE(nsc.nspname, nso.nspname, nsp.nspname, nst.nspname, nsrw.nspname) AS nspname
+	FROM pg_depend dep
+	LEFT JOIN pg_class cl ON dep.refobjid=cl.oid
+	LEFT JOIN pg_attribute att ON dep.refobjid=att.attrelid AND dep.refobjsubid=att.attnum
+	LEFT JOIN pg_namespace nsc ON cl.relnamespace=nsc.oid
+	LEFT JOIN pg_proc pr ON dep.refobjid=pr.oid
+	LEFT JOIN pg_namespace nsp ON pr.pronamespace=nsp.oid
+	LEFT JOIN pg_trigger tg ON dep.refobjid=tg.oid
+	LEFT JOIN pg_type ty ON dep.refobjid=ty.oid
+	LEFT JOIN pg_namespace nst ON ty.typnamespace=nst.oid
+	LEFT JOIN pg_constraint co ON dep.refobjid=co.oid
+	LEFT JOIN pg_class coc ON co.conrelid=coc.oid
+	LEFT JOIN pg_namespace nso ON co.connamespace=nso.oid
+	LEFT JOIN pg_rewrite rw ON dep.refobjid=rw.oid
+	LEFT JOIN pg_class clrw ON clrw.oid=rw.ev_class
+	LEFT JOIN pg_namespace nsrw ON clrw.relnamespace=nsrw.oid
+	LEFT JOIN pg_language la ON dep.refobjid=la.oid
+	LEFT JOIN pg_namespace ns ON dep.refobjid=ns.oid
+	LEFT JOIN pg_attrdef ad ON ad.adrelid=att.attrelid AND ad.adnum=att.attnum
+	LEFT JOIN pg_foreign_server fs ON fs.oid=dep.refobjid
+	LEFT JOIN pg_foreign_data_wrapper fdw ON fdw.oid=dep.refobjid
+	WHERE dep.objid=-3::oid AND
+	refclassid IN ( SELECT oid FROM pg_class WHERE relname IN
+	   ('pg_class', 'pg_constraint', 'pg_conversion', 'pg_language', 'pg_proc', 'pg_rewrite', 'pg_namespace',
+	   'pg_trigger', 'pg_type', 'pg_attrdef', 'pg_event_trigger', 'pg_foreign_server', 'pg_foreign_data_wrapper'))
+	ORDER BY refclassid, cl.relkind
+2019-04-04 22:57:02.149 CEST [19560] ERROR:  syntax error at or near "wtf" at character 1
+2019-04-04 22:57:02.149 CEST [19560] STATEMENT:  wtf co to je to public :D;
+2019-04-04 22:58:59.012 CEST [19560] ERROR:  syntax error at or near "the" at character 1
+2019-04-04 22:58:59.012 CEST [19560] STATEMENT:  the fuck :D :D
+	;
+2019-04-04 23:02:19.123 CEST [25376] ERROR:  syntax error at or near "asi" at character 1
+2019-04-04 23:02:19.123 CEST [25376] STATEMENT:  asi se ten pg admin nema s timhle rad nebo co :D;
+2019-04-04 23:06:19.449 CEST [25376] ERROR:  syntax error at or near "trochu" at character 1
+2019-04-04 23:06:19.449 CEST [25376] STATEMENT:  trochu to vypada ze to muže clashovat s necím co už se jmenuje user v tom psqd
+	dane mozna jsme tam naexportovali tabulku jmenem user ap apak smazali;
+2019-04-04 23:06:34.297 CEST [25376] ERROR:  syntax error at or near "asi" at character 1
+2019-04-04 23:06:34.297 CEST [25376] STATEMENT:  asi to používá tabulku user na neco jiného, asi kdo je zrovna lognutej
+	;
+2019-04-04 23:07:53.913 CEST [25376] ERROR:  syntax error at or near "jo" at character 1
+2019-04-04 23:07:53.913 CEST [25376] STATEMENT:  jo je to tak.... trochu strange ale což no
+	users se ti nelibi jako holder pro usery?
+	Jo chci drzet jednotne cislo
+	operator? scientist? :D no tak aspon vime kde je chyba, good luck ;
+2019-04-04 23:08:04.840 CEST [25376] ERROR:  syntax error at or near ")" at character 1
+2019-04-04 23:08:04.840 CEST [25376] STATEMENT:  )
+	Dik jsi pasak ;
+2019-04-04 23:08:11.935 CEST [9732] LOG:  server process (PID 20932) was terminated by exception 0xC000013A
+2019-04-04 23:08:11.935 CEST [9732] DETAIL:  Failed process was running: select * from public.user;
+2019-04-04 23:08:11.935 CEST [9732] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2019-04-04 23:08:11.935 CEST [9732] LOG:  terminating any other active server processes
+2019-04-04 23:08:11.940 CEST [1052] WARNING:  terminating connection because of crash of another server process
+2019-04-04 23:08:11.940 CEST [1052] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-04-04 23:08:11.940 CEST [1052] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-04-04 23:08:11.942 CEST [23884] WARNING:  terminating connection because of crash of another server process
+2019-04-04 23:08:11.942 CEST [23884] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-04-04 23:08:11.942 CEST [23884] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-04-04 23:08:11.944 CEST [13908] WARNING:  terminating connection because of crash of another server process
+2019-04-04 23:08:11.944 CEST [13908] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-04-04 23:08:11.944 CEST [13908] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-04-04 23:08:11.946 CEST [21876] WARNING:  terminating connection because of crash of another server process
+2019-04-04 23:08:11.946 CEST [21876] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-04-04 23:08:11.946 CEST [21876] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-04-04 23:08:11.950 CEST [24488] WARNING:  terminating connection because of crash of another server process
+2019-04-04 23:08:11.950 CEST [24488] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-04-04 23:08:11.950 CEST [24488] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-04-04 23:08:11.988 CEST [9732] LOG:  statistics collector process (PID 18772) was terminated by exception 0xC000013A
+2019-04-04 23:08:11.988 CEST [9732] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2019-04-04 23:08:11.998 CEST [9732] LOG:  all server processes terminated; reinitializing
+2019-04-04 23:08:12.094 CEST [21432] LOG:  database system was interrupted; last known up at 2019-04-04 23:03:49 CEST
+2019-04-04 23:08:18.558 CEST [21432] LOG:  database system was not properly shut down; automatic recovery in progress
+2019-04-04 23:08:18.573 CEST [21432] LOG:  redo starts at 0/17E30E0
+2019-04-04 23:08:18.577 CEST [21432] LOG:  invalid record length at 0/17E4B88: wanted 24, got 0
+2019-04-04 23:08:18.577 CEST [21432] LOG:  redo done at 0/17E4B50
+2019-04-04 23:08:18.577 CEST [21432] LOG:  last completed transaction was at log time 2019-04-04 23:03:59.976846+02
+2019-04-04 23:08:18.796 CEST [9732] LOG:  database system is ready to accept connections
+2019-04-04 23:24:07.188 CEST [3408] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:24:07.188 CEST [3408] LOG:  unexpected EOF on client connection with an open transaction
+2019-04-04 23:25:26.798 CEST [7840] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:32:07.506 CEST [6164] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:32:07.507 CEST [22004] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:32:07.507 CEST [21540] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:32:07.508 CEST [1568] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:32:17.810 CEST [20264] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:32:27.844 CEST [16488] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:35:59.157 CEST [4248] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:36:13.379 CEST [4196] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:36:42.890 CEST [18784] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:40:33.202 CEST [12600] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:40:33.203 CEST [2296] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:41:43.356 CEST [12452] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:41:58.606 CEST [19672] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:42:21.842 CEST [22564] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:42:24.568 CEST [24704] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:42:30.804 CEST [25220] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:43:35.317 CEST [22388] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:44:01.484 CEST [23628] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-04 23:44:04.472 CEST [2772] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-05 06:55:28.695 CEST [12452] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-06 14:22:08.586 CEST [9732] LOG:  server process (PID 6680) was terminated by exception 0xC000013A
+2019-04-06 14:22:08.586 CEST [9732] DETAIL:  Failed process was running: 
+	            SELECT
+	                pswd_hash = crypt('shit150', salt) AS hit
+	            FROM
+	               operator
+	            WHERE
+	                login = 'Ondrej'
+	        
+2019-04-06 14:22:08.586 CEST [9732] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2019-04-06 14:22:08.587 CEST [9732] LOG:  terminating any other active server processes
+2019-04-06 14:22:08.616 CEST [19692] WARNING:  terminating connection because of crash of another server process
+2019-04-06 14:22:08.616 CEST [19692] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-04-06 14:22:08.616 CEST [19692] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-04-06 14:22:08.676 CEST [25304] WARNING:  terminating connection because of crash of another server process
+2019-04-06 14:22:08.676 CEST [25304] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2019-04-06 14:22:08.676 CEST [25304] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2019-04-06 14:22:08.716 CEST [9732] LOG:  all server processes terminated; reinitializing
+2019-04-06 14:22:08.793 CEST [17832] LOG:  database system was interrupted; last known up at 2019-04-04 23:13:19 CEST
+2019-04-06 14:22:10.715 CEST [9732] LOG:  received fast shutdown request
+2019-04-06 14:22:11.953 CEST [9732] LOG:  abnormal database system shutdown
+2019-04-14 10:30:00.695 CEST [22152] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-14 10:30:00.696 CEST [22152] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-14 10:30:00.856 CEST [20888] LOG:  database system was interrupted; last known up at 2019-04-04 23:13:19 CEST
+2019-04-14 10:30:07.043 CEST [20888] LOG:  database system was not properly shut down; automatic recovery in progress
+2019-04-14 10:30:07.066 CEST [20888] LOG:  redo starts at 0/17EF0E0
+2019-04-14 10:30:07.066 CEST [20888] LOG:  invalid record length at 0/17EF1C0: wanted 24, got 0
+2019-04-14 10:30:07.066 CEST [20888] LOG:  redo done at 0/17EF188
+2019-04-14 10:30:07.207 CEST [22152] LOG:  database system is ready to accept connections
+2019-04-14 11:26:47.719 CEST [6328] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-14 11:26:47.720 CEST [6328] LOG:  unexpected EOF on client connection with an open transaction
+2019-04-14 11:27:11.185 CEST [3092] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-14 11:29:55.683 CEST [12208] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-14 11:30:00.205 CEST [12184] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	

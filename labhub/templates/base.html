@@ -1,9 +1,11 @@
 {%- extends "bootstrap/base.html" %}
 
-{% block title %}LABhub -
-  {% if request.endpoint == "login" %}login
-  {% elif request.endpoint == "index" %}Vítejte
-{% endif %}
+{% block title %}
+  {% if title %}
+     LABhub - {{ title }}
+  {% else %}
+     LABhub
+  {% endif %}
 {% endblock %}
 
 {% import "bootstrap/fixes.html" as fixes %}

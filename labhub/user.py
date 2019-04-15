@@ -28,9 +28,9 @@ class User(Site):
         """
         sql = """
             SELECT
-                u.pswd_hash = crypt(%(password)s, u.salt) AS hit
+                pswd_hash = crypt(%(password)s, salt) AS hit
             FROM
-                users u
+               operator
             WHERE
                 login = %(login)s
         """
@@ -45,7 +45,7 @@ class User(Site):
 
     def create(self, mail, name, password):
         """
-        Create new user in database.
+        Create new operator in database.
         """
         sql = """
             INSERT INTO contacts
@@ -62,7 +62,7 @@ class User(Site):
         salt = self.c.fetchone()["salt"]
 
         sql = """
-            INSERT INTO users
+            INSERT INTO operator
                 (login, name, id_contact, salt, pswd_hash)
             VALUES (
                 %(login)s,

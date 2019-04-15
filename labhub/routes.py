@@ -17,7 +17,7 @@ from labhub.user import User
 @app.route("/index/")
 @login_required
 def index():
-    return render_template("index.html")
+    return render_template("index.html", title="Home page")
 
 ##################
 # routes with view
@@ -64,8 +64,26 @@ def users():
 def funPage():
     return render_template("funPage.html")
 
+@app.route("/addMeasurementLog/")
+@login_required
+def addMeasurementLog():
+    return render_template("addmeasurementlog.html", title="Add measurement log")
 
+@app.route("/addSample/")
+def addSample():
+    return render_template("addsample.html")
 
+@app.route("/addStructure/")
+def addStructure():
+    return render_template("addstructure.html")
+
+@app.route("/addProject/")
+def addProject():
+    return render_template("addproject.html")
+
+@app.route("/addSetup/")
+def addSetup():
+    return render_template("addsetup.html")
 
 # @app.route("/user_detail/")
 # @login_required
