@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from wtforms import Form
-from wtforms import IntegerField, TextField, PasswordField, DateTimeField, BooleanField, TextAreaField, SelectField
+from wtforms import IntegerField, TextField, PasswordField, DateTimeField, BooleanField, TextAreaField, SelectField, SubmitField
 from wtforms.widgets import HiddenInput
 from wtforms.validators import NumberRange, DataRequired, Length, Optional
 
@@ -31,11 +31,11 @@ class CreateUserForm(Form):
     password = PasswordField("password", [DataRequired(), Length(min=5, max=64)])
     password_check = PasswordField("password_check", [DataRequired(), Length(min=5, max=64)])
 
-class AddMeasurementLog(form):
+class AddMeasurementLog(Form):
     """
     Class validating creation of new measurement log.
     """    
-    nameOfMeasurement = TextField("name of measurement", [DataRequired(), Length(min=2, max=42)])
+    nameOfMeasurement = TextField("name of measurement", [Length(min=2, max=42), DataRequired()])
     project = SelectField("project", [DataRequired()], choices=[("1","project 1"), ("2", "project 2")])
     setup = SelectField("setup", [DataRequired()], choices=[("1","setup 1"), ("2", "setup 2")])
     sample = SelectField("sample", [DataRequired()], choices=[("1","sample 1"), ("2", "sample 2")])
@@ -43,4 +43,5 @@ class AddMeasurementLog(form):
     idea = TextAreaField("idea", [Length(max=10485760)])
     comment = TextAreaField("comment", [Length(max=10485760)])
     path = TextAreaField("path", [Length(max=10485760)])
+    submit = SubmitField("Add measurement")
 

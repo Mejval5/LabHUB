@@ -8,10 +8,12 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 from labhub import app, db
 
-from labhub.lib.forms import LoginForm, CreateUserForm
+from labhub.lib.forms import LoginForm, CreateUserForm, AddMeasurementLog
 from labhub.lib.pagination import Pagination
 
 from labhub.user import User
+
+app.config['SECRET_KEY'] = '579195sarf8bdgf3cadc62c51621dsfde280ba245'
 
 @app.route("/")
 @app.route("/index/")
@@ -67,7 +69,8 @@ def funPage():
 @app.route("/addMeasurementLog/")
 @login_required
 def addMeasurementLog():
-    return render_template("addmeasurementlog.html", title="Add measurement log")
+    form = AddMeasurementLog()
+    return render_template("addmeasurementlog.html", title="Add measurement log", form=form)
 
 @app.route("/addSample/")
 def addSample():
