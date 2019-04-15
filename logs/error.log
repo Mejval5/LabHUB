@@ -1044,3 +1044,5 @@ INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:13:01] "GET /addMeasurementLog/ HTTP
 INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:13:02] "GET /static/css/labhub.css HTTP/1.1" 200 -
 INFO:werkzeug: * Detected change in 'C:\\LABhub\\labhub\\lib\\forms.py', reloading
 INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\LABhub\\labhub\\lib\\forms.py', reloading
+INFO:werkzeug: * Restarting with stat

@@ -5141,3 +5141,5 @@
 2019-04-15 08:29:35.384 CEST [2516] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
 	
 2019-04-15 08:29:35.384 CEST [2516] LOG:  unexpected EOF on client connection with an open transaction
+2019-04-15 09:38:38.073 CEST [18852] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
