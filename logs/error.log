@@ -1029,3 +1029,18 @@ INFO:werkzeug: * Debugger PIN: 238-975-737
 INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 INFO:werkzeug:127.0.0.1 - - [14/Apr/2019 11:39:04] "GET /login/ HTTP/1.1" 302 -
 INFO:werkzeug:127.0.0.1 - - [14/Apr/2019 11:39:04] "GET /index/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:40] "GET /login/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:40] "GET /static/css/labhub.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:43] "GET /addMeasurementLog/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:43] "GET /login/?next=%2FaddMeasurementLog%2F HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:43] "GET /static/css/labhub.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:50] "POST /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:51] "GET /login/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:51] "GET /static/css/labhub.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:59] "POST /login/ HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:12:59] "GET /index/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:13:00] "GET /static/css/labhub.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:13:01] "GET /addMeasurementLog/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2019 08:13:02] "GET /static/css/labhub.css HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\LABhub\\labhub\\lib\\forms.py', reloading
+INFO:werkzeug: * Restarting with stat
