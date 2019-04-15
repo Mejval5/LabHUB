@@ -66,10 +66,13 @@ def users():
 def funPage():
     return render_template("funPage.html")
 
-@app.route("/addMeasurementLog/")
+@app.route("/addMeasurementLog/", methods=['GET', 'POST'])
 @login_required
 def addMeasurementLog():
     form = AddMeasurementLog()
+    if form.validate() :
+        flash(f'Account created for {form.nameOfMeasurement.data}!', 'success')
+        return redirect(url_for('index'))
     return render_template("addmeasurementlog.html", title="Add measurement log", form=form)
 
 @app.route("/addSample/")

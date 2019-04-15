@@ -5152,3 +5152,54 @@
 	
 2019-04-15 21:41:26.029 CEST [22756] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
 	
+2019-04-15 22:25:08.505 CEST [3928] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:25:08.505 CEST [23316] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:25:08.516 CEST [9584] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:25:08.517 CEST [9584] LOG:  unexpected EOF on client connection with an open transaction
+2019-04-15 22:25:08.517 CEST [19688] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:32:12.979 CEST [16232] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:32:15.838 CEST [7900] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:33:14.618 CEST [22572] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:33:33.691 CEST [23196] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:35:06.017 CEST [6856] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:35:29.046 CEST [14564] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:36:45.415 CEST [6596] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:38:09.419 CEST [24772] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:38:09.420 CEST [2100] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:43:34.656 CEST [24440] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:43:34.656 CEST [17064] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:43:34.656 CEST [20048] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:43:48.119 CEST [1836] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:44:01.645 CEST [10860] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2019-04-15 22:44:31.548 CEST [22152] LOG:  received fast shutdown request
+2019-04-15 22:44:31.567 CEST [23072] ERROR:  canceling statement due to user request
+2019-04-15 22:44:31.569 CEST [22152] LOG:  aborting any active transactions
+2019-04-15 22:44:31.571 CEST [19200] FATAL:  terminating connection due to administrator command
+2019-04-15 22:44:31.579 CEST [15528] FATAL:  terminating connection due to administrator command
+2019-04-15 22:44:31.610 CEST [22152] LOG:  background worker "logical replication launcher" (PID 23072) exited with exit code 1
+2019-04-15 22:44:31.631 CEST [5984] LOG:  shutting down
+2019-04-15 22:44:31.812 CEST [22152] LOG:  database system is shut down
+2019-04-15 22:54:45.828 CEST [6268] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-15 22:54:45.829 CEST [6268] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-15 22:54:45.962 CEST [3040] LOG:  database system was shut down at 2019-04-15 22:44:31 CEST
+2019-04-15 22:54:46.018 CEST [6268] LOG:  database system is ready to accept connections
+2019-04-15 22:57:02.962 CEST [23352] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
